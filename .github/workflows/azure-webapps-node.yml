@@ -1,4 +1,4 @@
-name: Build and Deploy to Azure Web App
+name: Build and Deploy to Azure Web App on Windows
 
 on:
   push:
@@ -8,42 +8,50 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      # Setup Node.js
+      # Setup Node.js version
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x' # Możesz dostosować wersję Node.js
+          node-version: '20.x'
+          cache: 'npm'
+
+      # Install dependencies and build frontend
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build --prod
+        shell: pwsh
 
       # Install dependencies for backend
       - name: Install backend dependencies
         run: |
           cd backend
           npm install
-
-      # Build frontend
-      - name: Build frontend
-        run: |
-          cd frontend
-          npm install
-          npm run build --prod
-        env:
-          # Ustaw zmienne środowiskowe używane przez Angular CLI jeśli potrzebujesz
+        shell: pwsh
 
       # Move frontend build to backend/public (or any static serve directory)
       - name: Move frontend build to backend directory
         run: |
-          mv frontend/dist/* backend/public/
+          Move-Item -Path frontend/dist/* -Destination backend/public/
+        shell: pwsh
+
+      # Zip the backend together with the frontend for deployment
+      - name: Zip the application for deployment
+        run: |
+          Compress-Archive -Path backend/* -DestinationPath deploy.zip
+        shell: pwsh
 
       # Deploy to Azure Web App
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: dotlaw-akademia # Nazwa Twojej aplikacji w Azure
+          app-name: dotlaw-akademia # Zastąp to nazwą Twojej aplikacji w Azure
           slot-name: Production
-          package: backend
+          package: deploy.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A729626A7A98430080D68F040317FF05 }}
