@@ -1,0 +1,516 @@
+
+.dashboard-stats {
+    background-color: #f0f7fd;
+}
+// .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+//     background-color: #825EF3!important;
+//     opacity: 20%!important;
+//     color:#fff!important;
+//   }
+ 
+// .text-primary:hover {
+//     color:#fff!important;
+// } 
+.radek-btn {
+    border: 0;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 8px 16px; /* Reduced padding */
+    display: inline-block;
+    color: var(--whiteColor);
+    transition: var(--transition);
+    background-color: var(--primaryColor);
+    font-size: var(--smallFontSize); /* Adjusted font size */
+    font-weight: 400;
+
+    &.two {
+        background-color: var(--secondaryColor);
+        color: var(--whiteColor);
+
+        &:hover {
+            background-color: var(--primaryColor);
+            color: var(--whiteColor);
+        }
+    }
+
+    &:hover {
+        background-color: var(--secondaryColor);
+        color: var(--whiteColor);
+    }
+}
+
+.main {
+    position: relative;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: 100vh;
+    transition: 0.5s;
+    font-size:var(--fontSizesmall);
+    .main-inner {
+        min-height: 100vh;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        background-color: #f0f7fd;
+    }
+    .card {
+        margin-bottom: 24px;
+        transition: box-shadow .2s ease-in-out;
+        box-shadow: 0 1px 20px #455a6414;
+        border: none;
+        transition: all .5s ease-in-out;
+    }
+    .fs-3 {
+        font-size: 1.25rem!important;
+    }
+    .card.border-top-radius {
+        border-radius: 24px 24px 0 0!important;
+        overflow: hidden;
+        background-color: #f8f9fa;
+    }
+    .topbar {
+        .navbar-brand {
+            display: none;
+        }
+    }
+
+}
+
+.dropdown-menu.show {
+    display: block;
+    right: 0px;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: transparent;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    right: 0px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+.main.active {
+    .topbar {
+        .navbar-brand  {
+            display: inline-block;
+        }
+    }
+} 
+table.table.index-table {
+    margin-bottom: 115px;
+}
+
+.form-popup {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .popup-inner {
+        width: 530px;
+        padding: 0px;
+        position: relative;
+        border-radius: 5px;
+        background-color: var(--whiteColor);
+        margin: {
+            left: auto;
+            right: auto;
+        };
+
+        .close-btn {
+            /* top: -15px; */
+            /* width: 35px; */
+            /* right: -10px; */
+            /* border: none; */
+            /* height: 35px; */
+            /* font-size: 20px; */
+            /* line-height: 37px; */
+            /* border-radius: 50%; */
+            /* position: absolute; */
+            transition: var(--transition);
+            background-color: var(--whiteColor);
+
+            &:hover {
+               // background-color: var(--pri)d;
+               // color: var(--whiteColor);
+            }
+        }
+    }
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: calc( 10px - ( 1px ));
+    border-top-right-radius: calc( 10px - ( 1px ));
+}
+
+h4, .h4 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.modal-body {
+    padding: 1rem;
+}
+
+
+
+@media (min-width: 1200px) {
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+}
+
+  .main.active {
+    width: calc(100% - 0px);
+    left: 0px;
+  }
+
+  input.form-control {
+    border-radius: 8px;
+    padding: 12px 20px;
+    height: 52px;
+    border: 1px solid #825EF3;
+}
+body {
+    font-size: 0.875rem;
+}
+
+  
+  .nav-tabs {
+    border-bottom: none !important;
+  }
+  .avtar:not([class*='bg-']) {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  .card.dashnum-card {
+    border-radius: 24px;
+    border: 0px;
+    .card-body {
+      padding: 34px 17px 34px 17px;
+      .avtar {
+        width: 55px;
+        height: 55px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .avtar.first-card-icon {
+        background: #FBF3E3;
+      }
+      .avtar.second-card-icon {
+        background: #F9FAFB;
+      }
+      .avtar.third-card-icon {
+        background: #F6E5E2;
+      }
+      .avtar.forth-card-icon {
+        background: #E4F3EA;
+      }
+        p {
+        font-size: 14px;
+        color: #212529;
+        }
+    }
+   
+  }
+
+
+  .table > :not(caption) > * > * {
+    background-color: transparent;
+  }
+  .index-table {  
+    thead.bg-thead th {
+      background: #FBF3E3 !important;
+      overflow: hidden;
+      padding: 9px 35px !important;
+      text-align: center;
+      &:first-child {
+        border-top-left-radius: 10px ;
+        text-align: left;
+      }
+      &:last-child {
+        border-top-right-radius: 10px ;
+      }
+    }
+    tbody td {
+      text-align: center;
+      padding: 9px 35px !important;
+      &:first-child {
+        text-align: left;
+        max-width: 194px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+  
+  
+
+
+
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .dashboard-sidebar {
+        margin: {
+            right: 0;
+            bottom: 25px;
+        };
+        .nav {
+            .nav-item {
+                .nav-link {
+                    padding: 12px 15px 12px 37px;
+                    font-size: 15px;
+
+                    i {
+                        left: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .dashboard-stats {
+        padding: 15px 15px 0;
+    
+        .stats-box {
+            padding: 20px 15px;
+            margin-bottom: 15px;
+    
+            .icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+                margin-bottom: 18px;
+            }
+            h3 {
+                margin-bottom: 8px;
+                font-size: 25px;
+            }
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+    .courses-table {
+        padding: 15px;
+    
+        table, .table {
+            thead {
+                tr {
+                    th {
+                        padding: 12px 15px;
+                        font-size: 15px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    th, td {
+                        padding: 12px 15px;
+                        white-space: nowrap;
+    
+                        .progress-title {
+                            font-size: 14px;
+                        }
+                        .default-btn {
+                            font-size: 13px;
+                            padding: {
+                                top: 11px;
+                                left: 25px;
+                                right: 25px;
+                                bottom: 11px;
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .dashboard-sidebar {
+        margin: {
+            right: 0;
+            bottom: 25px;
+        };
+        .nav {
+            .nav-item {
+                .nav-link {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .dashboard-stats {
+        .stats-box {
+            padding: 25px;
+    
+            .icon {
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
+            }
+            h3 {
+                font-size: 28px;
+            }
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+    .courses-table {
+        table, .table {
+            tbody {
+                tr {
+                    th, td {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .dashboard-sidebar {
+        margin-right: 0;
+    
+        .nav {
+            .nav-item {
+                .nav-link {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .dashboard-stats {
+        .stats-box {
+            padding: 25px 15px;
+    
+            h3 {
+                font-size: 30px;
+            }
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+    .courses-table {
+        table, .table {
+            tbody {
+                tr {
+                    th, td {
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+
+
+@media (max-width: 991px) {
+    .navigation {
+      left: -300px;
+    }
+    .navigation.active {
+      width: 300px;
+      left: 0;
+    }
+    .main {
+      width: 100%;
+      left: 0;
+    }
+    .main.active {
+     // left: 300px;
+    }
+  
+  }
+  @media (max-width: 480px) {
+    .user {
+      min-width: 40px;
+    }
+    .navigation {
+      width: 100%;
+      left: -100%;
+      z-index: 1000;
+    }
+    .navigation.active {
+      width: 100%;
+      left: 0;
+    }
+    .toggle {
+      z-index: 10001;
+    }
+    .main.active .toggle {
+      color: #fff;
+      position: fixed;
+      right: 0;
+      left: initial;
+    }
+  }

@@ -1,0 +1,66 @@
+<!-- Page Banner -->
+<!-- signup -->
+<div class="signup-area position-relative">
+    <div class="container">
+
+        <div class="row parent-form-sing h-100 align-items-center">
+           
+            <div class="col-lg-6 col-md-12 py-lg-4" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+                <div class="register-form my-4 my-lg-5">
+
+                  <div *ngIf="message" class="alert" [ngClass]="{
+                    'alert-info': alertType === '',
+                    'alert-success': alertType === 'success',
+                    'alert-warning': alertType === 'warning',
+                    'alert-danger': alertType === 'danger'
+                  }">
+                    {{ message }}
+                  </div>
+                  
+                  
+                    <div *ngIf="!isLoading" class="row">
+                        <div class="col-md-12">
+                            <h2>Zaloguj się</h2>
+                        </div>
+                      
+                    </div>
+
+                    <div *ngIf="isLoading" class="text-center">
+                      <div class="spinner-border" style="color: #825EF3" role="status">
+                        <span class="visually-hidden">Trwa logowanie...</span>
+                      </div>
+                      <p>Przenoszę do panelu...</p>
+                    </div>
+                    
+                    <form *ngIf="!isLoading" (ngSubmit)="onLogin()">
+                        <div class="form-group">
+                          <label>Twój adres email</label>
+                          <input type="email" class="form-control" [(ngModel)]="loginData.email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label>Hasło</label>
+                          <input type="password" class="form-control" [(ngModel)]="loginData.password" name="password" required>
+                        </div>
+                        
+                        <div *ngIf="loginError" class="alert alert-danger p-2">
+                          <span class="fs-6">{{ loginError }}</span>
+                        </div>
+                        <button type="submit" class="default-btn mb-3">Zaloguj się do platformy</button>
+                        <p>
+                          Nie posiadasz jeszcze konta?
+                          <a routerLink="/signup" class="signup d-block text-primary">Zarejestruj się tutaj</a>
+                        </p>
+                      </form>
+                     
+                   
+                </div>
+            </div>
+
+           
+        
+        </div>
+    </div>
+    <div class="banner-thumb bg-cover register-image" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="100" style="background: url(assets/images/sign-bg.png);"></div>
+
+</div>

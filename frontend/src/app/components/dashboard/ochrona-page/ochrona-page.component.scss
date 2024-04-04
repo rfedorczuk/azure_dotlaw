@@ -1,0 +1,74 @@
+@import "../dashboard.component.scss";
+
+.card.dashnum-card {
+    border-radius: 24px;
+    .card-body {
+      padding: 34px 17px 34px 17px;
+      .avtar {
+        width: 55px;
+        height: 55px;
+      }
+      .avtar.first-card-icon {
+        background: #EFE9FD;
+
+        ;
+      }
+      .avtar.second-card-icon {
+        background: #E4F3EA;
+
+      }
+    }
+   
+  }
+span.bg-success {
+  background: #E4F3EA;
+  padding: 4px 16px 4px 16px;
+  border-radius: 16px;
+  color: #48B070;
+  background-color: #E4F3EA !important;
+}
+span.bg-warning {
+  background: #FBF3E3;
+  padding: 4px 16px 4px 16px;
+  border-radius: 16px;
+  color: #EBAB49;
+  background-color: #FBF3E3 !important;
+}
+span.bg-danger {
+  background: #F6E5E2;
+  color: #D95826;
+  padding: 4px 16px 4px 16px;
+  border-radius: 16px;
+  background-color: #F6E5E2 !important;
+}
+
+.card {
+  margin-bottom: 24px;
+}
+.fs-3 {
+  font-size: 1.25rem!important;
+}
+.card {
+  margin-bottom: 24px;
+  transition: box-shadow .2s ease-in-out;
+  box-shadow: 0 1px 20px #455a6414;
+  border: none;
+  transition: all .5s ease-in-out;
+}
+.card.border-top-radius {
+  border-radius: 24px 24px 0 0!important;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+.dropdown-menu.show {
+  display: block;
+  right: 0px;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+@media (min-width: 1200px) {
+  h2, .h2 {
+      font-size: 1.5rem;
+  }
+}

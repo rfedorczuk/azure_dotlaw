@@ -1,0 +1,62 @@
+<div class="topbar navbar-area" [ngClass]="{'sticky': isSticky}">
+    <div class="topbar">
+       <div class="d-flex">
+          <div class="toggle">
+             <button class="toggles"  (click)="toggleMenu()">
+                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M5.75 0.750002L1.25 5.5L5.75 10.25" stroke="#FCFCFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+             </button>
+          </div>
+          <a class="navbar-brand nav-link" routerLink="/">
+          <img src="assets/images/logo.png" alt="logo">
+          </a>
+       </div>
+       <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+             <a href="javascript:void(0)" class="dropdown-toggle profile-main nav-link">
+                <div class="circular-avatar-wrapper">
+                   <img
+                   *ngIf="userAvatar"
+                   [src]="userAvatar"
+                   alt="Avatar użytkownika"
+                   class="img-fluid circular-avatar"
+                   />
+                   <img
+                      *ngIf="!userAvatar"
+                      src="../../../../assets/images/blank.png"
+                      alt="Avatar użytkownika"
+                      class="img-fluid circular-avatar"
+                      />
+                </div>
+                <span>
+                   <h5 class="m-0 fw-bold">{{ userName }}</h5>
+                   <p class="m-0" style="line-height: 1.2!important">{{ userRole }}</p>
+                </span>
+             </a>
+             <ul class="dropdown-menu">
+                <li class="nav-item">
+                   <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                   Wróć do strony głównej
+                   </a>
+                </li>
+                <li class="nav-item">
+                   <a routerLink="/admin-dashboard/my-profile" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                   Mój profil
+                   </a>
+                </li>
+                <li class="nav-item">
+                   <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="logout()">
+                   Wyloguj się
+                   </a>
+                </li>
+                <!-- <li class="nav-item">
+                   <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                       text
+                   </a>
+                   </li> -->
+             </ul>
+          </li>
+       </ul>
+    </div>
+ </div>

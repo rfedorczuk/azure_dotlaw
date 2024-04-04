@@ -1,0 +1,35 @@
+<!-- Default Featured Section -->
+<div class="container">
+<div
+    class="featured-area pt-100 pb-75" [ngClass]="{'bg-purpal mt-5': router.url === '/about'}">
+    
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-12  feature-box-parent" *ngFor="let content of featuredBox;">
+                <div class="featured-box position-relative">
+                <div>
+                    <h4 class="mb-0">{{content.title}}</h4>
+                    <p class="mb-0">{{content.text}}</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Featured Section for Home Demo - 2 -->
+<div
+    class="featured-area style-two pt-100 pb-75 d-none"
+    [ngClass]="{'d-block': router.url === '/index-2' || router.url === '/index-3'}"
+>
+    <div class="container">
+        <div class="row justify-content-center"> 
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 feature-box-parent" *ngFor="let content of featuredBox;">
+                <div class="featured-box position-relative">
+                    
+                    <h4 class="mb-0">{{content.title}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

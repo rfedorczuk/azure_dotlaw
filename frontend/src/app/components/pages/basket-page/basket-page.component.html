@@ -1,0 +1,87 @@
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100">
+    <div class="container">
+        <div class="page-banner-content">
+            <h1>Koszyk</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Course Details -->
+<div class="course-details-area pt-5">
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-lg-8 col-md-12">
+                <div class="basket">
+                    <div class="">
+                        <div class="">
+                            <div class="overview-details-content">
+                    <!-- Informacja o liczbie kursów w koszyku wyświetlana tylko raz -->
+                    <div class="course-details-instructor">
+                        <h5>{{basketItems.length}} kurs(y) w Twoim koszyku</h5>
+                        <hr class="my-2"/>
+                    
+                    
+                    <!-- Pętla po kursach w koszyku -->
+                    <div *ngFor="let item of basketItems; let i = index">
+                        <div class="row g-2">
+                            <div class="col-lg-3 col-xxl-3">
+                                <img [src]="item.imageUrl" class="img-fluid rounded" alt="course-image" (error)="setDefaultImage($event)">
+                            </div>
+                            <div class="col-lg-6 col-xxl-5">
+                                <div class="d-flex align-items-start flex-column h-100">
+                                    <div class="mb-auto">
+                                        <h4>{{ item.title }}</h4>
+                                        <p class="m-0">{{ item.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-xxl-4 text-md-end">
+                                <span class="d-inline-block text-primary pe-md-3" style="cursor: pointer;" (click)="removeFromBasket(item.courseId)">Usuń</span>
+                                <span class="fw-bold text-dark h5 d-inline-block">{{ item.price }} zł</span>
+                            </div>
+                        </div>
+                        
+                        <hr/> <!-- Dodaj linię oddzielającą kursy, jeśli chcesz -->
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 position-relative">
+                <img class="curve" src="assets/images/curve-sm-blr.png" alt="course-image">
+<div class="course-details-info">
+                <div class="content">
+                  <h5 class="mb-2 mt-2">Łącznie</h5>
+                  <h3 *ngIf="discountApplied">{{ totalAmount }} zł</h3>
+                  <h5 *ngIf="discountApplied"><s>{{ originalTotalAmount }} zł</s></h5>
+                  <h3 *ngIf="!discountApplied">{{ totalAmount }} zł</h3>
+                  
+                  <button class="btn radek-btn w-100 my-3" (click)="purchaseCourses()">Przejdź do rozliczenia</button>
+
+                  <hr />
+                  <h6>Promocje</h6>
+                  <div *ngIf="discountMessage" class="d-flex align-items-center mt-3 mb-3">
+                    <button class="btn-clear mr-2" type="button" (click)="removeDiscount()">
+                      &times;
+                    </button>
+                    <p class="m-2">{{ discountMessage }}</p>
+                  </div>
+                  
+                  <input class="form-control w-100" placeholder="Wpisz kod rabatowy" [(ngModel)]="discountCode" />
+                 
+                  <div class="text-end my-2">
+                    <button class="btn radek-btn my-3" (click)="applyDiscount()">Zastosuj</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    <app-toaster></app-toaster>
+</div>
+
+<app-featured-courses></app-featured-courses>

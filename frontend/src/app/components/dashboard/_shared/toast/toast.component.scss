@@ -1,0 +1,33 @@
+.success {
+    background-color: #48B070;
+  }
+  
+  .info {
+    background-color: #0d6efd;
+  }
+  
+  .warning {
+    background-color: #ffc107;
+  }
+  
+  .error {
+    background-color: #dc3545;
+  }
+
+  .toast-body {
+    position: relative;
+    color: #fff!important;
+  }
+  
+  .btn-close-custom {
+    position: absolute;
+    color:#fff!important;
+    top: 0.25rem;
+    right: 0.25rem;
+    transform: scale(0.7);
+  }
+
+  .btn-close-custom::before, .btn-close-custom::after {
+    background-color: #fff; /* Biały kolor dla krzyża */
+  }
+  

@@ -1,0 +1,44 @@
+<h2>Tworzenie Testu dla Kursu: {{ courseId }}</h2>
+<div class="card border-top-radius">
+  <div class="card-body p-2">
+    <div class="p-3">
+      <!-- Nawigacja zakładek dla pytań -->
+      <ul class="nav nav-tabs" id="questionTabs" role="tablist">
+        <li class="nav-item" *ngFor="let question of questions; let i = index">
+          <a class="nav-link" [class.active]="i === activeQuestionIndex" id="question-tab-{{i}}" data-toggle="tab" href="#question{{i}}" role="tab" attr.aria-controls="question{{i}}" (click)="setActiveQuestion(i)">Pytanie {{i + 1}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="addNewQuestion()">+ Dodaj nowe pytanie</a>
+        </li>
+      </ul>
+
+      <!-- Zawartość dla zakładek -->
+      <div class="tab-content" id="questionTabsContent">
+        <div *ngFor="let question of questions; let i = index" class="tab-pane fade" [class.show]="i === activeQuestionIndex" [class.active]="i === activeQuestionIndex" id="question{{i}}" role="tabpanel" attr.aria-labelledby="question-tab-{{i}}">
+          <div class="row mt-3">
+            <div class="col-lg-7 col-xl-7 col-xxl-5">
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control question-main me-lg-5" placeholder="Wpisz tutaj pytanie {{i + 1}}" [(ngModel)]="question.questionText" name="questionText{{i}}" required>
+                </div>
+
+                <div *ngFor="let answer of question.answers; let aIndex = index" class="mt-2">
+                  <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="answer.answerText" placeholder="Odpowiedź {{aIndex + 1}}" name="answerText{{i}}{{aIndex}}" required>
+                  </div>
+                </div>
+
+                <button class="transparent-btn mt-3 mb-4" type="button" (click)="addAnswerToQuestion(i)">Dodaj nową odpowiedź</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn text-dark" type="button">Anuluj</button>
+        <button class="radek-btn" type="button" (click)="saveAllQuestions();">Zatwierdź test</button>
+      </div>
+    </div>
+  </div>
+</div>

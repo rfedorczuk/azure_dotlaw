@@ -1,0 +1,180 @@
+<!-- Page Banner -->
+<div
+   class="page-banner-area ptb-100"
+   style="background-image: url(assets/images/contact-bg.png);"
+   >
+   <div class="container">
+      <div class="page-banner-content">
+         <h1>Kontakt</h1>
+         <ul class="ps-0 mb-0 list-unstyled">
+            <li class="d-inline-block position-relative"><a routerLink="/">Strona Główna</a></li>
+            <li class="d-inline-block position-relative">Kontakt</li>
+         </ul>
+      </div>
+   </div>
+</div>
+<!-- Contact Us -->
+<div class="contact-area pt-100 pb-75">
+   <div class="container">
+      <div class="row justify-content-between">
+         <div class="col-xxl-5 col-lg-6">
+            <div class="contact-info">
+               <div class="row justify-content-center">
+                  <div class="col-lg-12">
+                     <div class="box">
+                        <div class="icon mb-4">
+                           <img src="assets/images/logo.png" alt="icon"> 
+                        </div>
+                        <h6>dotlaw Skrzywanek Stępniowski i Wspólnicy sp. k.
+                           pl. Solny 2/3, 50-060 Wrocław 
+                        </h6>
+                        <p>
+                           wpisana do Rejestru Przedsiębiorców Krajowego Rejestru Sądowego przez Sąd Rejonowy dla Wrocławia – Fabrycznej we Wrocławiu, VI Wydział Gospodarczy KRS pod numerem: 0000859963, NIP: 8971884477.
+                        </p>
+                        <a class="text-primary fs-2 fw-normal" href="">contact[at]dotlaw.co</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="text-center py-4 py-md-5">
+               <img src="assets/images/curve-sm-blr.png" alt="icon"> 
+            </div>
+         </div>
+         <div class="col-xxl-6 col-lg-6">
+            <!-- Spinner -->
+        <div *ngIf="isLoading" class="text-center">
+            <div class="spinner-border" style="color: #825EF3" role="status">
+            <span class="visually-hidden">Trwa wysyłanie...</span>
+            </div>
+            <p>Trwa wysyłanie wiadomości</p>
+        </div>
+        
+        <!-- Komunikat -->
+        <div *ngIf="messageForm" class="alert" [ngClass]="{
+            'alert-success': alertType === 'success',
+            'alert-warning': alertType === 'warning',
+            'alert-danger': alertType === 'danger'
+        }">
+            {{ messageForm }}
+        </div>
+            <div *ngIf="!isLoading" class="contact-form">
+               <h3>Napisz do nas</h3>
+               <form (ngSubmit)="sendEmail()">
+                  <div class="row">
+                     <div class="col-lg-8 col-sm-12">
+                        <div class="form-group mb-3">
+                           <label>Twój adres email</label>
+                           <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Twój adres email">
+                        </div>
+                     </div>
+                     <div class="col-12">
+                        <div class="form-group mb-3">
+                           <label>Wiadomość</label>
+                           <textarea cols="30" rows="9" class="form-control" [(ngModel)]="message" name="message" placeholder="Treść wiadomości"></textarea>
+                        </div>
+                     </div>
+                     <div class="col-12">
+                        <p class="mb-2"> Przetwarzamy Twoje dane w celach kontaktowych, szczegóły w naszej  
+                           <a href="/assets/files/Polityka_prywatnosci_platformy_elearningowej_dotlaw_2024-01-30.pdf" target="_blank">Polityce prywatności.</a></p>
+                     </div>
+                     <div class="col-12 col-lg-9">
+                        <button type="submit" class="default-btn d-block w-100 text-center">Wyślij wiadomość</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <!-- <div class="col-md-12 mt-4 mt-md-5">
+            <h2 class="fs-2 mb-3 fw-normal">Najczęściej zadawane pytania</h2>
+            <div class="accordion">
+               <div class="row gx-3">
+                  <div class="col-lg-6">
+                     <div class="accordion-section">
+                        <div class="accordion-header open" (click)="toggleSection(0)" [ngClass]="{ 'open': isSectionOpen(0) }">
+                        Pytanie 1
+                     </div>
+                     <div class="accordion-content open" [ngClass]="{ 'open': isSectionOpen(0) }">
+                        <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+                     </div>
+                  </div>
+                  <div class="accordion-section">
+                     <div class="accordion-header" (click)="toggleSection(1)" [ngClass]="{ 'open': isSectionOpen(1) }">
+                     Pytanie 2
+                  </div>
+                  <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(1) }">
+                     <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+                  </div>
+               </div>
+               <div class="accordion-section">
+                  <div class="accordion-header" (click)="toggleSection(2)" [ngClass]="{ 'open': isSectionOpen(2) }">
+                  Pytanie 3
+               </div>
+               <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(2) }">
+                  <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+               </div>
+            </div>
+            <div class="accordion-section">
+               <div class="accordion-header" (click)="toggleSection(3)" [ngClass]="{ 'open': isSectionOpen(3) }">
+               Pytanie 4
+            </div>
+            <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(3) }">
+               <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+            </div>
+         </div>
+         <div class="accordion-section">
+            <div class="accordion-header" (click)="toggleSection(4)" [ngClass]="{ 'open': isSectionOpen(4) }">
+            Pytanie 5
+         </div>
+         <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(4) }">
+            <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+         </div>
+      </div>
+   </div>
+   <div class="col-lg-6">
+      <div class="accordion-section">
+         <div class="accordion-header" (click)="toggleSection(5)" [ngClass]="{ 'open': isSectionOpen(5) }">
+         Pytanie 6
+      </div>
+      <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(5) }">
+         <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+      </div>
+   </div>
+   <div class="accordion-section">
+      <div class="accordion-header" (click)="toggleSection(7)" [ngClass]="{ 'open': isSectionOpen(7) }">
+      Pytanie 7
+   </div>
+   <div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(7) }">
+      <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+   </div>
+</div>
+<div class="accordion-section">
+   <div class="accordion-header" (click)="toggleSection(8)" [ngClass]="{ 'open': isSectionOpen(8) }">
+   Pytanie 8
+</div>
+<div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(8) }">
+   <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+</div>
+</div>
+<div class="accordion-section">
+   <div class="accordion-header" (click)="toggleSection(9)" [ngClass]="{ 'open': isSectionOpen(9) }">
+   Pytanie 9
+</div>
+<div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(9) }">
+   <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+</div>
+</div>
+<div class="accordion-section">
+   <div class="accordion-header" (click)="toggleSection(10)" [ngClass]="{ 'open': isSectionOpen(10) }">
+   Pytanie 10
+</div>
+<div class="accordion-content" [ngClass]="{ 'open': isSectionOpen(10) }">
+   <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. Orci, dictumst nec aliquet id ullamcorper venenatis. </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+</div>
+</div>
+</div>

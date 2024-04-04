@@ -1,0 +1,92 @@
+<ng-container *ngIf="isDashboardPage && !isAdminDashboardPage">
+    <div class="dashboard-footer">
+       <!-- Content specific to the dashboard stats -->
+    </div>
+ </ng-container>
+ <ng-container *ngIf="isAdminDashboardPage">
+    <div class="dashboard-footer">
+       <!-- Content specific to the dashboard stats -->
+    </div>
+ </ng-container>
+ <!-- Content that will be displayed when the condition is false -->
+ <ng-container *ngIf="!isDashboardPage && !isAdminDashboardPage">
+    <div class="features-area-second pt-100 pb-75" [ngClass]="{'d-none': router.url === '/profile-authentication' || router.url === '/forgot-password' || router.url === '/signup'}">
+       <img src="assets/images/footer-side.png" class="img-fluid curve-side" alt="blog-image">  
+       <div class="container">
+          <div class="row align-items-center" *ngFor="let content of UpperfooterContent;">
+             <div class="col-lg-7 pt-3">
+                <div class="features-content">
+                   <h2>{{content.title2}}</h2>
+                   <p>{{content.text}}</p>
+                </div>
+             </div>
+             <div class="col-lg-5 mx-auto text-center text-lg-end position-relative">
+                <img src="assets/images/footer-lg-curve.png" class="img-fluid curve-top" alt="blog-image">  
+                <img [src]="content.image3" alt="features-image">
+                <img src="assets/images/footer-bottom-curve.png" class="img-fluid curve-bottom" alt="">
+             </div>
+          </div>
+       </div>
+    </div>
+ </ng-container>
+ <!-- Footer -->
+ <div class="footer-area position-relative pt-100 pb-75">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="footer-widget">
+                <a routerLink="/" class="logo d-inline-block">
+                <img src="assets/images/Logo-white.png" alt="logo">
+                </a>
+             </div>
+          </div>
+          <div class="col-lg-12">
+             <div class="footer-widget">
+                <ul class="footer-links ps-0 mb-0 list-unstyled">
+                   <li>
+                      <a routerLink="/" class="d-inline-block position-relative">
+                      Strona Główna
+                      </a>
+                   </li>
+                   <li>
+                      <a routerLink="/courses-grid"  class="d-inline-block position-relative">
+                      Kursy
+                      </a>
+                   </li>
+                   <li>
+                      <a routerLink="/about" class="d-inline-block position-relative">
+                      O nas
+                      </a>
+                   </li>
+                   <!-- pakiety -->
+                   <!-- <li>
+                      <a routerLink="/pricing" class="d-inline-block position-relative">
+                       
+                          Pakiety
+                      </a>
+                      </li> -->
+                   <li>
+                      <a routerLink="/contact" class="d-inline-block position-relative">
+                      Kontakt
+                      </a>
+                   </li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- Copyright -->
+ <div class="copyright-area text-center">
+    <div class="container">
+       <ul class="m-0 text-white">
+          <li>
+             <a href="/assets/files/Regulamin_platformy_e-learningowej_dotlaw_2024-01-30.pdf" target="_blank">Regulamin</a>
+          </li>
+          |  
+          <li>
+             <a href="/assets/files/Polityka_prywatnosci_platformy_elearningowej_dotlaw_2024-01-30.pdf" target="_blank">Polityka prywatności</a>
+          </li>
+       </ul>
+    </div>
+ </div>

@@ -1,0 +1,158 @@
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100" style="background-image: url(assets/images/bg-pagel.png);">
+    <div class="container">
+       <div class="page-banner-content">
+          <h1>Kurs</h1>
+          <ul class="ps-0 mb-0 list-unstyled">
+             <li class="d-inline-block position-relative"><a routerLink="/">Strona Główna</a></li>
+             <li class="d-inline-block position-relative"><a routerLink="/courses-grid">Kursy</a></li>
+          </ul>
+       </div>
+    </div>
+ </div>
+ <!-- Course Details -->
+ <div  class="course-details-area pt-5">
+    <div class="container">
+        <ng-template #loading>
+            <div class="row">
+              <!-- Lewa kolumna -->
+              <div class="col-lg-8 col-md-12">
+                <ngx-skeleton-loader count="1" [theme]="{'height': '38px', 'margin-bottom': '10px'}"></ngx-skeleton-loader>
+                <ngx-skeleton-loader count="1" [theme]="{'height': '20px', 'width':'100px', 'margin-bottom': '10px'}"></ngx-skeleton-loader>
+                <ngx-skeleton-loader count="5" [theme]="{'height': '20px', 'margin-bottom': '10px'}"></ngx-skeleton-loader>
+                
+                <div class="mt-4">
+                  <ngx-skeleton-loader count="1" [theme]="{'height': '150px'}"></ngx-skeleton-loader>
+                </div>
+              </div>
+              
+              <!-- Prawa kolumna -->
+              <div class="col-lg-4 col-md-12">
+                <div class="mt-2">
+                  <ngx-skeleton-loader count="1" [theme]="{'height': '200px', 'margin-bottom': '20px'}"></ngx-skeleton-loader>
+                </div>
+                <ngx-skeleton-loader count="4" [theme]="{'height': '20px', 'margin-bottom': '10px'}"></ngx-skeleton-loader>
+              </div>
+            </div>
+          </ng-template>
+          
+       <div *ngIf="course; else loading" class="row">
+          <div class="col-lg-8 col-md-12">
+             <div class="course-details-desc">
+                <div class="overview-details-content">
+                   <div class="course-details-instructor">
+                      <h2>{{ title || 'Brak tytułu' }}</h2>
+                      <!-- Rating Section -->
+                      <div class="rating-section mb-4 mb-md-5">
+                         <!-- <span class="rating-text">{{ course.rating }}</span> -->
+                         <span class="rating-text"> 5.0 </span>
+                         <span class="rating-icon px-2 d-inline-block rating">
+                            <!-- Dynamic star rating based on course.rating -->
+                            <!-- Example for 5 stars: -->
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                         </span>
+                         <!-- <span class="rating-text-count">({{ course.rating_count }})</span> -->
+                         <span class="rating-text-count">( 16 )</span>
+                      </div>
+                      <hr/>
+                      <!-- Data dodania i aktualizacji kursu -->
+                      <!-- Course Details Instructor and Dates -->
+                      <div class="course-details-instructor">
+                         <div class="row">
+                            <div class="col-lg-4">
+                               <div class="user d-md-flex align-items-center">
+                                  <img [src]="course.user.pictures.base_link || 'assets/images/users/user1.jpg'" class="rounded-circle" width="80" alt="user" loading="lazy">
+                                  <div>
+                                     <h6>Prowadzący kurs</h6>
+                                     <span class="designation d-block">{{ course.user.name || 'Jędrzej Stępniowski' }}</span>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="col-lg-4 align-self-center">
+                               <div class="user">
+                                  <h6>Data dodania kursu</h6>
+                                  <span class="designation d-block">{{ course.created_time | date: 'dd.MM.yyyy' || '1 stycznia 2023' }}</span>
+                               </div>
+                            </div>
+                            <div class="col-lg-4 align-self-center">
+                               <div class="user">
+                                  <h6>Ostatnia aktualizacja</h6>
+                                  <span class="designation d-block">{{ course.modified_time | date: 'dd.MM.yyyy' || '20 stycznia 2023' }}</span>
+                               </div>
+                            </div>
+                         </div>
+                         <hr/>
+                      </div>
+                      <div class="content bg-light p-2 p-md-3 p-lg-5 rounded-3">
+                         <h4>Opis</h4>
+                         <p>{{ course.description || 'Brak opisu' }}</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+             <div class="course-details-info">
+                <div class="image position-relative" (click)="openVideoPopup()">
+                   <img [src]="course.pictures.base_link" alt="course-image" class="course-image" loading="lazy">
+                   <button class="play-button">
+                   <i class='bx bx-play'></i>
+                   </button>
+                   <!-- Kontener dla Vimeo Player -->
+                   <div #vimeoPlayer *ngIf="isOpen" class="video-container"></div>
+                   <!-- Komunikat o wykupieniu kursu -->
+                </div>
+                <div *ngIf="showMessage" class="purchase-message mt-5 text-primary text-center text-muted fw-bold">
+                   Aby kontynuować oglądanie, wykup dostęp do pełnego kursu.
+                </div>
+                <div class="content">
+                   <!-- <button (click)="openVideoPopup()">opwn</button>
+                      <h3>Course Includes</h3> -->
+                   <ul class="info ps-0 mb-0 list-unstyled mt-5">
+                      <li class="d-flex align-items-center justify-content-between">
+                         <span>  
+                         <img src="assets/images/clock.png" alt="course-image" loading="lazy">
+                         Czas trwania</span>
+                         {{ course.duration | duration }}
+                      </li>
+                      <li class="d-flex align-items-center justify-content-between">
+                         <span><img src="assets/images/category.png" alt="course-image" loading="lazy">
+                         Kategoria</span>
+                         {{ course.category || 'Brak kategorii' }}
+                      </li>
+                      <li class="d-flex align-items-center justify-content-between">
+                         <span><img src="assets/images/certificate.png" alt="course-image" loading="lazy">
+                         Certyfikat</span>
+                         {{ course.has_certificate ? 'Tak' : 'Tak' }}
+                      </li>
+                      <li class="d-flex align-items-center justify-content-between">
+                         <span><img src="assets/images/wallet.png" alt="course-image" loading="lazy">
+                         Cena szkolenia</span>
+                         {{ price + ' zł' || 'Brak' }}
+                      </li>
+                   </ul>
+                   <div *ngIf="isUserEnrolled; else enrollButton" class="mt-5 section-title text-center">
+                      Już posiadasz ten kurs
+                   </div>
+                   <ng-template #enrollButton>
+                      <div class="btn-box row g-1">
+                         <div class="col-md-6">
+                            <a href="javascript:void(0);" class="default-btn d-block w-100 text-center" (click)="purchaseCourse()">Wykup ten kurs</a>
+                         </div>
+                         <div class="col-md-6">
+                            <a href="javascript:void(0);" class="default-btn d-block w-100 text-center two">Poproś o ten kurs</a>
+                         </div>
+                      </div>
+                   </ng-template>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- Featured Courses Component -->
+ <app-featured-courses></app-featured-courses>

@@ -1,0 +1,63 @@
+
+
+    label.form-label, label {
+        font-size: 0.875rem;
+        color: #000;
+    }
+    input.form-control {
+        border-radius: 8px;
+        padding: 12px 20px;
+        height: 52px;
+        border: 1px solid #825EF3;
+    }
+    .btn-primary {
+        padding: .5rem 1rem;
+        font-size: .875rem;
+        font-weight: 500;
+        line-height: 1.5;
+        border-radius: 30px;
+        background: #825EF3!important;
+        border: 1px solid #825EF3!important;
+    }
+    button.btn.btn-outline-primary {
+        border: 1px solid #825ef3!important;
+        padding: 0.5rem 1rem;
+        font-size: .875rem;
+        font-weight: 500;
+        line-height: 1.5;
+        border-radius: 30px;
+        color: #825ef3!important;
+    }
+
+    button.btn.btn-outline-primary:hover {
+        background-color: #825ef3;
+        color: #fff!important; 
+      }
+
+      .circular-avatar {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+    }
+    
+  
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .my-profile-box {
+        padding: 15px;
+    
+        img {
+            margin-bottom: 15px;
+            max-width: 100%;
+        }
+        ul {
+            li {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-between mb-3">
+  <h5 class="text-muted">Mój zespół ({{ usersCount }})</h5>
+  <div>
+     <a class="m-0  d-inline-block" style="cursor: pointer" (click)="openPopup()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
+           <path d="M12.1992 22C17.7221 22 22.1992 17.5228 22.1992 12C22.1992 6.47715 17.7221 2 12.1992 2C6.67637 2 2.19922 6.47715 2.19922 12C2.19922 17.5228 6.67637 22 12.1992 22Z" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+           <path d="M12.1992 8V16" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+           <path d="M8.19922 12H16.1992" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="opacity-60">Zaproś użytkownika do organizacji</span>
+     </a>
+  </div>
+</div>
+<div class="card border-top-radius">
+  <div class="card-body p-2">
+     <div class="table-responsive">
+      <table class="table table-hover table-light szkolenia-table align-middle">
+        <thead class="bg-thead">
+          <tr>
+            <th scope="col" class="text-start">Avatar</th>
+            <th scope="col">Imię i nazwisko</th>
+            <th scope="col" class="text-center">Data dołączenia</th>
+            <th scope="col" class="text-center">Aktywne kursy</th>
+            <th scope="col" class="text-center">Ukończone kursy</th>
+            <th scope="col" class="text-center">Certyfikaty</th>
+            <th scope="col" class="text-center">Edytuj</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let user of users; let i = index">
+            <tr (click)="toggleRow(i)">
+              <td scope="row">
+                <img *ngIf="user.avatar" [src]="'data:image/jpeg;base64,' + user.avatar" alt="Avatar" class="user-avatar">
+                <img *ngIf="!user.avatar" src="assets/images/blank.png" alt="Default Avatar" class="user-avatar">
+              </td>
+              <td>{{ user.name }} {{ user.surname }}</td>
+              <td class="text-center">{{ user.created_at | date: 'dd.MM.yyyy' }}</td>
+              <td class="text-center">{{ user.courseCount }}</td>
+              <td class="text-center">{{ user.completedCoursesCount || '0' }}</td>
+              <td class="text-center">{{ user.completedCoursesCount || '0' }}</td>
+              <td class="text-center">
+                <div class="dropdown">
+                  <button class="btn btn-white dropdown-toggle" (click)="$event.stopPropagation(); toggleDropdown(i)" type="button" [id]="'dropdownMenuButton' + i">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots"
+                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                    <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                 </svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{ 'show': isOpenArray[i] }" [attr.aria-labelledby]="'dropdownMenuButton' + i">
+                    <li><a class="dropdown-item" (click)="deleteUser(user.id); $event.stopPropagation()">Usuń użytkownika</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="user.isExpanded" class="user-details-row">
+              <td colspan="7">
+                <ng-container *ngIf="user.courses?.length; else noCourses">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Tytuł</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Data Zakupu</th>
+                        <th scope="col" class="text-center">Data Zakończenia</th>
+                        <th scope="col" class="text-center">Akcja</th>
+                        <!-- <th scope="col" class="text-center">Powiadomienie</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let course of user.courses" class="course-row">
+                        <td >{{ course.title }}</td>
+                        <td class="text-center">{{ course.status }}</td>
+                        <td class="text-center">{{ course.enrollment_date | date: 'dd.MM.yyyy' || 'Brak' }}</td>
+                        <td class="text-center">{{ course.completion_date ? (course.completion_date | date: 'dd.MM.yyyy') : 'Brak' }}</td>
+                        <!-- <dt class="text-center">
+                          <ng-container *ngIf="course.status === 'Ukończony'; else noCertificate">
+                            <a class="text-primary fw-bold" href="javascript:void(0);" (click)="downloadCertificate(user.id, course.course_id); $event.preventDefault()" aria-label="Download Certificate">Pobierz</a>
+                          </ng-container>
+                          <ng-template #noCertificate>
+                            <span>Brak</span>
+                          </ng-template>
+                        </td> -->
+                        <td class="text-center">
+                          <ng-container [ngSwitch]="course.status">
+                            <a *ngSwitchCase="'Ukończony'" class="text-primary fw-bold" href="javascript:void(0);" (click)="downloadCertificate(user.id, course.course_id); $event.preventDefault()" aria-label="Download Certificate">Pobierz certyfilkat</a>
+                            <a *ngSwitchCase="'W trakcie'" class="text-primary fw-bold" href="javascript:void(0);" (click)="sendCourseReminder(user.id, user.email, course.course_id, 'finish')" aria-label="Notify about finish the course">Przypomnij o dokończeniu kursu</a>
+                            <a *ngSwitchCase="'Nowy'" class="text-primary fw-bold" href="javascript:void(0);" (click)="sendCourseReminder(user.id, user.email, course.course_id, 'start')" aria-label="Notify about start course">Przypomnij o rozpoczęciu kursu</a>
+                            
+                            <!-- Możesz dodać więcej przypadków dla innych statusów -->
+                            <a *ngSwitchDefault class="text-primary fw-bold" href="javascript:void(0);">Brak</a>
+                          </ng-container>
+                        </td>
+                        
+                        
+                      </tr>
+                      
+
+                      
+                    </tbody>
+                  </table>
+                </ng-container>
+                <ng-template #noCourses>
+                  <p>Ten użytkownik nie posiada żadnych kursów.</p>
+                </ng-template>
+              </td>
+            </tr>
+            
+            
+            
+          </ng-container>
+        </tbody>
+      </table>
+      
+     </div>
+     <!-- certificates.component.html -->
+<div class="text-end mb-3">
+  <button class="radek-btn text-end" (click)="downloadAllCertificates()">Pobierz wszystkie certyfikaty swojej organizacji</button>
+  <!-- Użyłem przykładowego companyId=1. Możesz to dostosować do swoich potrzeb. -->
+</div>
+
+  </div>
+</div>
+<div class="form-popup" *ngIf="isOpen">
+  <div class="popup-inner">
+     <div class="modal-header bg-white m-2">
+        <h4 class="modal-title" id="modal-basic-title"><strong>Zaproś nowego użytkownika</strong></h4>
+        <button (click)="closePopup()" type="button" class="close-btn btn-close">
+        <i class='bx bx-x'></i>
+        </button>
+     </div>
+     <div class="modal-body bg-white rounded">
+        <form>
+           <div class="mb-3">
+              <div>
+                 <label for="emailInput" class="form-label">Wpisz adres email osoby, którą chcesz dodać. </label>
+                 <input type="text"
+                 class="form-control"
+                 id="emailInput"
+                 [(ngModel)]="inputValue"
+                 (input)="handleInput($event)"
+                 placeholder="Adres email">
+              </div>
+              <div class="chips-container">
+                 <div class="chip mt-3" *ngFor="let email of emailAddresses; let i = index">
+                    {{ email }}
+                    <span class="chip-close-btn" (click)="removeEmail(i)">×</span>
+                 </div>
+              </div>
+           </div>
+           <div class="d-flex justify-content-end">
+           <button class="btn radek-btn" (click)="sendInvitations()" type="button">Wyślij zaproszenie do platformy</button>
+           </div>
+          </form>
+     </div>
+  </div>
+</div>

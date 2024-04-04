@@ -1,0 +1,142 @@
+
+<div class="navbar-area" [ngClass]="{'sticky': isSticky}">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg" [class.active]="classApplied">
+            <a class="navbar-brand" routerLink="/">
+                <img src="assets/images/logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" (click)="toggleClass()">
+                <span class="burger-menu">
+                    <span class="top-bar"></span>
+                    <span class="middle-bar"></span>
+                    <span class="bottom-bar"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse">
+             
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Strona główna
+                        </a>
+                    
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/courses-grid" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Kursy
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/about" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            O nas
+                        </a>
+                    </li>
+                    <!-- pakiety -->
+                    <!-- <li class="nav-item">
+                        <a routerLink="/pricing" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()">
+                            Pakiety
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a routerLink="/contact" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Kontakt
+                        </a>
+                    </li>
+                
+                   
+                    <li class="nav-item" *ngIf="!isAuthenticated">
+                        <a routerLink="/profile-authentication" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()">
+                            Zaloguj się
+                        </a>
+                    </li>
+                    <li class="nav-item" *ngIf="isAuthenticated">
+                        <a [routerLink]="getDashboardRoute()" class="nav-link" style="cursor: pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Zalogowany, {{ userName }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" (click)="logout()">Wyloguj się</a></li>
+                            <!-- You can add more submenu items here if needed -->
+                        </ul>
+                    </li>
+                    <li *ngIf="isAuthenticated" class="nav-item">
+                        <a routerLink="/koszyk" class="nav-link" style="cursor: pointer">
+                            <i class="bx bxs-cart" style="width: 24px; height: 24px;">{{ basketCount }}</i>
+                        </a>
+                    </li>
+
+
+                    
+                </ul>
+                <ul class="navbar-nav for-responsive">
+               
+                    <li class="nav-item">
+                        <a (click)="handleItemClick()" routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Strona główna
+                        </a>
+                    
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="handleItemClick()" routerLink="/courses-grid" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Kursy
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a (click)="handleItemClick()" routerLink="/about" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            O nas
+                        </a>
+                    </li>
+                    <!-- pakiety -->
+                    <!-- <li class="nav-item">
+                        <a (click)="handleItemClick()" routerLink="/pricing" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()">
+                            Pakiety
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a (click)="handleItemClick()" routerLink="/contact" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Kontakt
+                        </a>
+                    </li>
+                
+                  
+                    <li class="nav-item" *ngIf="!isAuthenticated">
+                        <a routerLink="/profile-authentication" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="toggleClass()">
+                            Zaloguj się
+                        </a>
+                    </li>
+                    <li class="nav-item" *ngIf="isAuthenticated">
+                        <a class="nav-link">
+                            Zalogowany, {{ userName }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" (click)="logout()">Wyloguj się</a></li>
+                            <!-- You can add more submenu items here if needed -->
+                        </ul>
+                    </li>
+                    <li *ngIf="isAuthenticated" class="nav-item">
+                        <a routerLink="/koszyk" class="nav-link" style="cursor: pointer">
+                            <a routerLink="/koszyk" class="nav-link" style="cursor: pointer">
+                                <i class="bx bxs-cart" style="width: 24px; height: 24px;">{{ basketCount }}</i>
+                            </a>
+                        </a>
+                    </li>
+                </ul>
+                <!-- <div class="others-option d-flex align-items-center" >
+                    <div class="option-item">
+                        <a (click)="handleItemClick()" routerLink="/signup" class="default-btn two">Załóż darmowe konto</a>
+                    </div>
+                </div> -->
+                <div class="others-option d-flex align-items-center" *ngIf="!isAuthenticated">
+                    <div class="option-item">
+                        <a (click)="handleItemClick()" routerLink="/signup" class="default-btn two">Załóż darmowe konto</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+

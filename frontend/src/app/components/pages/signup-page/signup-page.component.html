@@ -1,0 +1,154 @@
+<!-- signup-page.component.html -->
+<div class="signup-area position-relative">
+    <div class="container">
+        <div class="row parent-form-sing h-100 align-items-center">
+            <div class="col-lg-6 col-md-12 py-lg-4" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+                <div class="register-form my-4 my-lg-5">
+                    <div *ngIf="!isLoading" class="row justify-content-between">
+                        <div class="col-sm-auto col-lg-7">
+                            <h2>Załóż konto</h2>
+                        </div>
+                        <div class="col-sm-auto col-lg-5">
+                            <p class="text-end">Posiadasz już konto?
+                                <a routerLink="/profile-authentication" class="d-block text-primary">Zaloguj się tutaj</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <ul *ngIf="!isLoading" class="nav nav-tabs d-block">
+                        <li class="nav-item d-inline-block my-1" [ngClass]="{'active': currentTab === 'tab1'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0" (click)="switchTab($event, 'tab1')">
+                                Jako członek swojej firmy
+                            </button>
+                        </li>
+                        <li class="nav-item d-inline-block my-1" [ngClass]="{'active': currentTab === 'tab2'}">
+                            <button type="button" class="nav-link position-relative shadow-none border-0 mb-0" (click)="switchTab($event, 'tab2')">
+                                Załóż konto jako osoba prywatna
+                            </button>
+                        </li>
+                    </ul>
+                    <div *ngIf="isLoading" class="text-center">
+                        <div class="spinner-border" style="color: #825EF3" role="status">
+                          <span class="visually-hidden">Trwa logowanie...</span>
+                        </div>
+                        <p>Trwa rejestracja...</p>
+                      </div>
+                    <div *ngIf="showRegistrationForm" class="tab-content">
+                        <!-- Tab 1 - Company Member -->
+                        <div  class="tab-pane fade" id="tab1" *ngIf="currentTab === 'tab1'">
+                            <form (ngSubmit)="onRegister()">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Twój służbowy adres email</label>
+                                            <input type="email" class="form-control" [(ngModel)]="user.email" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Twoje imię</label>
+                                            <input type="text" class="form-control" [(ngModel)]="user.name" name="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Nazwisko</label>
+                                            <input type="text" class="form-control" [(ngModel)]="user.surname" name="surname">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Hasło</label>
+                                            <input type="password" class="form-control" [(ngModel)]="user.password" name="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Powtórz hasło</label>
+                                            <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirmPassword" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Kod vouchera Twojej organizacji</label>
+                                            <input type="text" class="form-control" [(ngModel)]="user.voucher" name="voucher">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" [(ngModel)]="user.acceptTerms" name="acceptTerms" id="flexCheckDefault" required>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                Klikając "Załóż konto" akceptujesz Regulamin zakupów oraz Politykę prywatności platformy elearningowej dotlaw.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+                                    {{ errorMessage }}
+                                  </div>
+                                <button type="submit" class="default-btn mt-3">Załóż konto</button>
+                            </form>
+                        </div>
+                    
+                        <!-- Tab 2 - Individual -->
+                      <!-- Tab 2 - Individual -->
+<div class="tab-pane fade" id="tab2" *ngIf="currentTab === 'tab2'">
+    <form (ngSubmit)="onRegister()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Twój adres email</label>
+                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Twoje imię</label>
+                    <input type="text" class="form-control" [(ngModel)]="user.name" name="name" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nazwisko</label>
+                    <input type="text" class="form-control" [(ngModel)]="user.surname" name="surname">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Hasło</label>
+                    <input type="password" class="form-control" [(ngModel)]="user.password" name="password" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Powtórz hasło</label>
+                    <input type="password" class="form-control" [(ngModel)]="user.confirmPassword" name="confirmPassword" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="user.acceptTerms" name="acceptTerms" id="flexCheckDefault" required>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Klikając "Załóż konto" akceptujesz Regulamin zakupów oraz Politykę prywatności platformy.
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+            {{ errorMessage }}
+          </div>
+        <button type="submit" class="default-btn mt-3">Załóż konto</button>
+    </form>
+</div>
+
+                    </div>
+                    <div *ngIf="!showRegistrationForm" class="alert alert-success mt-3">
+                        Wysłaliśmy link aktywacyjny na Twój adres e-mail. Sprawdź pocztę i dokończ rejestrację.
+                      </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner-thumb bg-cover register-image" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="100" style="background: url(assets/images/sign-bg.png);"></div>
+</div>

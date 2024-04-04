@@ -1,0 +1,106 @@
+<div *ngIf="!endTime">
+  <p>Pozostały czas na zakończenie testu: {{formatTime(remainingTime)}}</p>
+</div>
+
+<div *ngIf="!endTime" >
+<div class="progress mb-3 mt-3" style="height: 10px;">
+  <div class="progress-bar" role="progressbar" 
+       [style.width]="getProgressBarWidth()"
+       style="background-color: #4caf50;" 
+       aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div *ngFor="let question of examQuestions; let i = index">
+  <div *ngIf="currentQuestionIndex === i" [@stepTransition]="getStepTransition(i)">
+    
+
+    <h4>{{ i + 1 }}. {{ question.question_text }}</h4>
+    <div class="mt-2 form-check" *ngFor="let answer of question.answers">
+      <input class="form-check-input" type="radio" name="flexRadioDefault{{ i }}"
+             id="flexRadioDefault{{ answer.id }}"
+             (click)="selectAnswer(question.id, answer.id)">
+      <label class="form-check-label" for="flexRadioDefault{{ answer.id }}">
+        {{ answer.answer_text }}
+      </label>
+    </div>
+    <button *ngIf="currentQuestionIndex > 0" class="btn back-btn px-md-5 px-3 m-2" (click)="onPrev()">Powrót</button>
+    <button *ngIf="currentQuestionIndex < examQuestions.length - 1" class="btn btn-sm radek-btn px-md-5 px-3 m-2" (click)="onNext()">Następne pytanie</button>
+    <button *ngIf="currentQuestionIndex === examQuestions.length - 1" class="btn btn-sm radek-btn px-md-5 px-3 m-2" (click)="completeTest()">Sprawdź wynik</button>
+    
+  </div>
+</div>
+</div>
+
+
+<div *ngIf="endTime">
+  <!-- <h4 *ngIf="correctAnswersCount / examQuestions.length >= 0.8">Gratulacje! Ukończyłeś test pomyślnie.</h4>
+  <h4 *ngIf="correctAnswersCount / examQuestions.length < 0.8">Niestety, nie udało się zaliczyć testu.</h4>
+  <p>Ilość pytań: {{examQuestions.length}}</p>
+  <p>Twój wynik: {{correctAnswersCount}} z {{examQuestions.length}}</p>
+  <p>Twój czas: {{getElapsedTime()}} sekund</p>
+
+  <div class="row">
+    <div class="col-md-9">
+        <h4>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+            <g clip-path="url(#clip0_467_3826)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0.231323C3.5875 0.231323 0 3.81882 0 8.23132C0 12.6438 3.5875 16.2313 8 16.2313C12.4125 16.2313 16 12.6438 16 8.23132C16 3.81882 12.4125 0.231323 8 0.231323Z" fill="#4BAE4F"/>
+            <path d="M6.45937 11.8907C5.4375 10.8688 4.42188 9.8376 3.39687 8.81572C3.28437 8.70322 3.28437 8.51572 3.39687 8.40322L4.575 7.2251C4.6875 7.1126 4.875 7.1126 4.9875 7.2251L6.67188 8.90947L11.0031 4.5751C11.1188 4.4626 11.3031 4.4626 11.4187 4.5751L12.6 5.75635C12.7156 5.87197 12.7156 6.05635 12.6 6.16885L6.87187 11.8907C6.75937 12.0063 6.575 12.0063 6.45937 11.8907Z" fill="white"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_467_3826">
+            <rect width="16" height="16" fill="white" transform="translate(0 0.231323)"/>
+            </clipPath>
+            </defs>
+            </svg>
+          Poprawnie ukończyłeś test sprawdzający Twoją wiedzę!</h4>
+        <p class="fw-bold mb-1">Ilośc pytań <span class="fw-normal"> 5</span></p>
+        <p class="fw-bold mb-1">Twój wynik:  <span class="fw-normal">4/5</span></p>
+        <p class="fw-bold mb-1">Twój czas <span class="fw-normal">13 min</span></p>
+        <p class="">Dziękujemy za Twój udział w szkoleniu. W zakładce <a href="" class="text-primary">Certyfikaty</a> znajdziesz dokument potwierdzający ukończenie kursu.</p>
+   
+      
+    </div> -->
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Conditional message based on the score -->
+        <h4>
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 17" fill="none">
+          
+          </svg> -->
+          <!-- Use *ngIf to conditionally display the message based on the score -->
+          <p class="fw-bold" *ngIf="correctAnswersCount / examQuestions.length >= 0.8">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 17" fill="none">
+              <g clip-path="url(#clip0_467_3826)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0.231323C3.5875 0.231323 0 3.81882 0 8.23132C0 12.6438 3.5875 16.2313 8 16.2313C12.4125 16.2313 16 12.6438 16 8.23132C16 3.81882 12.4125 0.231323 8 0.231323Z" fill="#4BAE4F"/>
+              <path d="M6.45937 11.8907C5.4375 10.8688 4.42188 9.8376 3.39687 8.81572C3.28437 8.70322 3.28437 8.51572 3.39687 8.40322L4.575 7.2251C4.6875 7.1126 4.875 7.1126 4.9875 7.2251L6.67188 8.90947L11.0031 4.5751C11.1188 4.4626 11.3031 4.4626 11.4187 4.5751L12.6 5.75635C12.7156 5.87197 12.7156 6.05635 12.6 6.16885L6.87187 11.8907C6.75937 12.0063 6.575 12.0063 6.45937 11.8907Z" fill="white"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_467_3826">
+              <rect width="16" height="16" fill="white" transform="translate(0 0.231323)"/>
+              </clipPath>
+              </defs>
+              </svg>
+               Poprawnie ukończyłeś test sprawdzający Twoją wiedzę!</p>
+          <p class="fw-bold mt-1" *ngIf="correctAnswersCount / examQuestions.length < 0.8">
+            <svg version="1.1" iwidth="18" height="18" d="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<circle style="fill:#D75A4A;" cx="25" cy="25" r="25"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	"/>
+</svg>
+ Niestety, nie udało się zaliczyć testu.</p>
+        </h4>
+        <!-- Dynamic question count and score display -->
+        <p class="fw-bold mb-1">Ilość pytań: <span class="fw-normal">{{ examQuestions.length }}</span></p>
+        <p class="fw-bold mb-1">Twój wynik: <span class="fw-normal">{{ correctAnswersCount }}/{{ examQuestions.length }}</span></p>
+        <p class="fw-bold mb-1">Twój czas: <span class="fw-normal">{{ getElapsedTime() }} minut</span></p>
+
+        <!-- Static content -->
+        <p class="">Dziękujemy za Twój udział w szkoleniu. W zakładce <a href="/dashboard/certyfikaty" class="text-primary">Certyfikaty</a> znajdziesz dokument potwierdzający ukończenie kursu.</p>
+      </div>
+    </div>
+    
+  </div>

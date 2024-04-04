@@ -1,0 +1,208 @@
+.navigation {
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+  }
+  .navigation.active {
+   // width: 80px;
+  }
+  button.toggles {
+    background: #e6dffd;
+    color: #825ef3;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 30px;
+    position: absolute;
+    right: 10px;
+    z-index: 99;
+    display: none;
+    border: 0px;
+    top: 10px;
+}
+  .navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+li.nav-item.logout-main {
+    position: absolute !important;
+    bottom: 0px;
+}
+  .navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-bottom: 15px;
+  }
+  
+ 
+  .navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    //pointer-events: none;
+    a {
+      &:hover, &.active {
+        background-color: transparent !important;
+        border-color: transparent !important;
+     }
+    }
+
+      
+  }
+  
+
+
+
+
+
+
+  .dashboard-sidebar {
+    border-radius: 5px;
+    margin-right: 15px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    background: #FCFCFD;
+    color: #616161;
+    .nav {
+      .nav-item {
+            .nav-link {
+
+              display: block;
+              border-radius: 30px;
+              position: relative;
+              margin-left: 16px;
+              margin-right: 16px;
+              transition: var(--transition);
+              padding: 12px 32px 12px 25px;
+              color: var(--blackColor);
+              position: relative;
+              svg path {
+                stroke: #9ca6b6;
+              }
+                font: {
+                    size: 0.875rem;
+                    weight: 400;
+                };
+                i {
+                    transform: translateY(-50%);
+                    position: absolute;
+                    margin-top: -1px;
+                    line-height: 1;
+                    left: 20px;
+                    top: 50%;
+                }
+                &:hover, &.active {
+                    background-color: var(--primaryColor);
+                    border-color: var(--primaryColor);
+                    color: var(--whiteColor);
+                    svg path {
+                      stroke: #fff;
+                    }
+                }
+            }
+          
+            &:first-child {
+                .nav-link {
+                    border-radius: 5px 5px 0 0;
+                }
+            }
+            &:last-child {
+                .nav-link {
+                    border-bottom: none;
+                    border-radius: 0 0 5px 5px;
+                }
+            }
+        }
+      .nav-item.side-logo {
+            height: 110px;
+            margin: 0px !important;
+            align-items: center;
+            display: flex;
+      }
+    }
+}
+@media (max-width: 480px) {
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+
+
+
+
+
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+   button.toggles {
+
+      display: block;
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}

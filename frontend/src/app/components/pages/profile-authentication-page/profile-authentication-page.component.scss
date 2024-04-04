@@ -1,0 +1,116 @@
+.signup-area {
+    background: #F9FAFB;
+    .banner-thumb.bg-cover.register-image {
+        width: 45%;
+        right: 0;
+        left: auto;
+        position: absolute;
+        height: 100%;
+        top: 0px;
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+    .register-form {
+        background-color: #fff;
+        padding: 12px;
+        border-radius: 24px;
+        padding: 40px;
+        box-shadow: 0px 4px 12px 0px #0000000F;
+
+        a.d-block.text-primary {
+            line-height: 12px;
+            font-size: 15px;
+        }
+    }
+}
+.register-form {
+    h2 {
+        font-size: 35px;
+        margin-bottom: 30px;
+    }
+    form {
+        .form-group {
+            margin-bottom: 25px;
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: var(--blackColor);
+                font: {
+                    size: 14px;
+                    weight: 400;
+                };
+            }
+            .form-control {
+                height: 52px;
+                box-shadow: unset;
+                padding: 16px, 25px, 16px, 25px;
+                border-radius: 8px;
+                
+                color: var(--primaryColor);
+                font-size: var(--fontSize);
+                border: 1px solid #825EF3;
+                background-color:#fff;
+                transition: var(--transition);
+    
+                &::placeholder {
+                    color: var(--bodyColor);
+                    transition: var(--transition);
+                }
+                &:focus {
+                    border-color: var(--primaryColor);
+                    background-color: transparent;
+    
+                    &::placeholder {
+                        color: transparent;
+                    }
+                }
+            }
+        }
+        label.form-check-label {
+            font-size: 12px;
+        }
+        .default-btn {
+            display: block;
+            width: 100%;
+        }
+        
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+ 
+
+
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+@media only screen and (min-width: 992px) {
+    .parent-form-sing {
+        min-height: 700px;
+        height: calc(100vh - 500px);
+    }
+}
+@media only screen and (max-width: 992px) {
+    .banner-thumb.bg-cover.register-image { 
+        display: none;
+    }
+}
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+
+}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

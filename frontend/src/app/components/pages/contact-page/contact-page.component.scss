@@ -1,0 +1,285 @@
+.contact-info {
+    .box {
+        padding: 0px;
+        margin-bottom: 25px;
+        position: relative;
+
+        .icon {
+
+            img {
+
+                margin: {
+                    left: auto;
+                    right: auto;
+                };
+            }
+        }
+        h6 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 28px;
+        }
+        p {
+            font-size: 12px;
+        }
+      
+    }
+}
+.contact-form {
+    margin-bottom: 25px;
+    border-radius: 5px;
+
+    h3 {
+        font-size: 40px;
+        margin-bottom: 25px;
+    }
+    form {
+        .form-group {
+            margin-bottom: 20px;
+            label {
+                line-height: 24px;
+                margin-bottom: 13px;
+                font-size: 16px;
+                color: #000;
+            }
+            .form-control {
+                height: 55px;
+                padding-left: 20px;
+                color: var(--blackColor);
+                font-size: var(--fontSize);
+                box-shadow: unset !important;
+                transition: var(--transition);
+                background-color: var(--whiteColor);
+                border: 1px solid #825EF3;
+
+                &::placeholder {
+                    color: var(--bodyColor);
+                    transition: var(--transition);
+                }
+                &:focus {
+                    border-color: var(--primaryColor);
+
+                    &::placeholder {
+                        color: transparent;
+                    }
+                }
+            }
+            textarea.form-control {
+                height: auto;
+                padding-top: 20px;
+            }
+        }
+        .default-btn {
+            padding: {
+                top: 14px;
+                bottom: 14px;
+            };
+        }
+    }
+}
+.contact-map {
+    iframe {
+        margin-bottom: -8px;
+        height: 600px;
+        width: 100%;
+        border: 0;
+    }
+}
+.accordion {
+    .accordion-section {
+        border: 1px solid #D7DEF0;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        .accordion-header {
+            display: flex;
+            cursor: pointer;
+            position: relative;
+            align-items: center;
+            padding: 24px 5px 24px 5px;
+            transition: var(--transition);
+            justify-content: space-between;
+           
+            
+
+            font: {
+                size: 18px;
+                weight: 600;
+            };
+           
+            &.open {
+                background-color: #fff;
+
+                &::before {
+                    transform: translateY(-50%) rotate(135deg);
+                }
+            }
+            &::before {
+                top: 50%;
+                right: 20px;
+                content: "\ebc0";
+                position: absolute;
+                transform: translateY(-50%);
+                font-weight: 400;
+                color: var(--primaryColor);
+                font: {
+                    family: boxicons;
+                    size: 25px;
+                };
+            }
+        }
+        .accordion-content {
+            opacity: 0;
+            padding: 3px;
+            display: none;
+            visibility: hidden;
+
+          
+            &.open {
+                opacity: 1;
+                display: block;
+                visibility: visible;
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .contact-info {
+        .box {
+            padding: 4px;
+            .icon {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                position: relative;
+                transform: translateY(0);
+                margin: {
+                    left: auto;
+                    right: auto;
+                    bottom: 20px;
+                };
+                img {
+                    width: auto;
+                }
+            }
+            h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .contact-form {
+        padding: 4px;
+    
+        h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        form {
+            .form-group {
+                margin-bottom: 20px;
+    
+                .form-control {
+                    height: 50px;
+                    font-size: 14px;
+                    padding-left: 12px;
+                }
+                textarea.form-control {
+                    padding-top: 12px;
+                }
+            }
+            .default-btn {
+                padding: {
+                    top: 13px;
+                    bottom: 13px;
+                };
+            }
+        }
+    }
+    .contact-map {
+        iframe {
+            height: 500px;
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .contact-info {
+        .box {
+            padding: 25px 25px 25px 135px;
+    
+            .icon {
+                left: 25px;
+                width: 90px;
+                height: 90px;
+    
+                img {
+                    width: 40px;
+                }
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .contact-form {
+        padding: 25px;
+    
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        form {
+            .form-group {
+                margin-bottom: 20px;
+    
+                .form-control {
+                    padding-left: 15px;
+                    font-size: 15px;
+                }
+                textarea.form-control {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {
+
+    .contact-info {
+        .box {
+            padding: 51px 35px 51px 155px;
+    
+            .icon {
+                left: 35px;
+            }
+        }
+    }
+    .contact-form {
+        padding: 35px;
+    }
+
+}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

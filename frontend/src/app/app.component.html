@@ -1,0 +1,45 @@
+<!-- 
+
+<ng-container *ngIf="isDashboardPage">
+    <div class="dashboard-stats">
+ 
+    </div>
+  </ng-container>
+
+ 
+  <ng-container *ngIf="!isDashboardPage">
+    <app-navbar></app-navbar>
+  </ng-container>
+
+
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<ngx-scrolltop></ngx-scrolltop>
+ -->
+<!-- app.component.html -->
+
+<!-- Treść dla dashboardu admina -->
+<ng-container *ngIf="isAdminDashboardPage">
+  <!-- Możesz tu umieścić specjalne treści dla dashboardu admina -->
+  <div class="dashboard-stats">
+    <!-- Content specific to the dashboard stats -->
+  </div>
+</ng-container>
+
+<!-- Treść dla zwykłego dashboardu -->
+<ng-container *ngIf="isDashboardPage && !isAdminDashboardPage">
+  <div class="dashboard-stats">
+    <!-- Content specific to the dashboard stats -->
+  </div>
+</ng-container>
+
+<!-- Treść, która będzie wyświetlana, gdy nie jesteśmy ani na dashboard, ani na admin-dashboard -->
+<ng-container *ngIf="!isDashboardPage && !isAdminDashboardPage">
+  <app-navbar></app-navbar>
+  <!-- Możliwe inne treści niezwiązane z dashboardem -->
+</ng-container>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<ngx-scrolltop></ngx-scrolltop>

@@ -1,0 +1,76 @@
+<!-- Page Banner -->
+<div class="page-banner-area ptb-100" style="background-image: url(assets/images/bg-pagel.png);">
+  <div class="container">
+    <div class="page-banner-content text-start">
+      <h1>Kursy</h1>
+      <ul class="ps-0 mb-0 list-unstyled">
+        <li class="d-inline-block position-relative">
+          <a routerLink="/">Strona Główna</a>
+        </li>
+        <li class="d-inline-block position-relative">
+          <a routerLink="/courses-grid">Kursy</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Courses -->
+<div class="courses-area position-relative z-2 ptb-100 ">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12">
+        <div class="row gy-4">
+          <div class="col-lg-12 text-center fs-3 fw-bold">Dostępne kursy</div>
+          <div *ngIf="courses.length; else loading" class="row gy-4">
+            <!-- <div *ngFor="let course of courses" class="col-lg-6 col-xl-6 col-md-6"> -->
+            <div *ngFor="let course of courses" class="col-lg-4 col-xl-4 col-md-4">
+              <div class="single-course-item position-relative">
+                <div class="image position-relative">
+                  <a [routerLink]="['/course-details', course.uri.split('/').pop()]" class="d-block">
+                    <!-- <img [src]="course.pictures.base_link" alt="course-image"> -->
+                    <!-- <img src="../../../../assets/images/features/feature3.jpg" alt="course-image"> -->
+                    <img [src]="course.imageUrl" alt="course-image" (error)="setDefaultImage($event)">
+                  </a>
+                  <span class="price">
+                    <!-- Konwertuj czas trwania z sekund na format hh:mm:ss -->
+                    {{ course.duration }}
+                  </span>
+                </div>
+                <div class="content">
+                  <h3>
+                    <a [routerLink]="['/course-details', course.uri.split('/').pop()]">
+                      {{ course.name }}
+                      <img src="assets/images/arrow-up-right.png" class="img-fluid float-md-end" alt="">
+                    </a>
+                  </h3>
+                  <p>{{ course.description || 'Brak opisu' }}</p>
+                  <!-- Miejsce na sekcję ocen i recenzji, jeśli dostępne -->
+                  <div class="meta justify-content-between align-items-center d-flex">
+                    <a [routerLink]="['/instructor-profile', course.user.uri]" class="user d-flex align-items-center">
+                      <img [src]="course.user.pictures.base_link" width="40" height="40" class="rounded-circle" alt="user-image">
+                      <div class="user-detail">
+                        <h5 class="m-0">{{ course.user.name }}</h5>
+                        <p class="m-0">Instruktor</p>
+                        <!-- Dostosuj według potrzeb -->
+                      </div>
+                    </a>
+                    <!-- Miejsce na informacje o cenie, jeśli dostępne -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #loading>
+            <div class="col-lg-4 col-xl-4 col-md-4" *ngFor="let loader of [].constructor(6)">
+              <ngx-skeleton-loader count="1" [theme]="{'width': '400px', 'height': '240px'}"></ngx-skeleton-loader>
+              <ngx-skeleton-loader count="3" [theme]="{'width': '400px', 'height': '10px', 'margin': '5px 0'}"></ngx-skeleton-loader>
+            </div>
+          </ng-template>
+        </div>
+        <!-- Pagination - dostosuj według potrzeb -->
+        <!-- <nav class="pagination-area text-center mt-3"><ul class="pagination mb-0 list-unstyled ps-0 d-block border-0 rounded-0"><li class="page-item disabled"><a class="page-link" routerLink="/courses-grid"><i class="flaticon-left-arrow"></i></a></li><li class="page-item"><a class="page-link active" routerLink="/courses-grid">1</a></li><li class="page-item"><a class="page-link" routerLink="/courses-grid">2</a></li><li class="page-item"><a class="page-link" routerLink="/courses-grid">3</a></li><li class="page-item"><a class="page-link" routerLink="/courses-grid">4</a></li><li class="page-item"><a class="page-link" routerLink="/courses-grid"><i class="flaticon-next"></i></a></li></ul></nav> -->
+        <!-- <nav class="pagination-area text-center mt-3"><ul class="pagination mb-0 list-unstyled ps-0 d-block border-0 rounded-0"><li class="page-item" [class.disabled]="currentPage === 1"><a class="page-link" (click)="setPage(currentPage - 1)"><i class="flaticon-left-arrow"></i></a></li><li *ngFor="let page of [].constructor(Math.ceil(courses.length / itemsPerPage)) | number; let i = index" class="page-item" [class.active]="currentPage === i+1"><a class="page-link" (click)="setPage(i+1)">{{ i + 1 }}</a></li><li class="page-item" [class.disabled]="currentPage === Math.ceil(courses.length / itemsPerPage)"><a class="page-link" (click)="setPage(currentPage + 1)"><i class="flaticon-next"></i></a></li></ul></nav> -->
+      </div>
+    </div>
+  </div>
+</div>

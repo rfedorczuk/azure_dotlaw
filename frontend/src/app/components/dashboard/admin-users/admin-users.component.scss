@@ -1,0 +1,148 @@
+.card {
+    margin-bottom: 24px;
+}
+.fs-3 {
+    font-size: 1.25rem!important;
+}
+.card {
+    margin-bottom: 24px;
+    transition: box-shadow .2s ease-in-out;
+    box-shadow: 0 1px 20px #455a6414;
+    border: none;
+    transition: all .5s ease-in-out;
+}
+.card.border-top-radius {
+    border-radius: 24px 24px 0 0!important;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+.dropdown-menu.show {
+    display: block;
+    right: 0px;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+@media (min-width: 1200px) {
+    h2, .h2 {
+        font-size: 1.5rem;
+    }
+}
+
+table.table.szkolenia-table {
+    margin-bottom: 115px;
+}
+
+.form-popup {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    .popup-inner {
+        width: 530px;
+        padding: 0px;
+        position: relative;
+        border-radius: 5px;
+        background-color: var(--whiteColor);
+        margin: {
+            left: auto;
+            right: auto;
+        };
+
+        .close-btn {
+            /* top: -15px; */
+            /* width: 35px; */
+            /* right: -10px; */
+            /* border: none; */
+            /* height: 35px; */
+            /* font-size: 20px; */
+            /* line-height: 37px; */
+            /* border-radius: 50%; */
+            /* position: absolute; */
+            transition: var(--transition);
+            background-color: var(--whiteColor);
+
+            &:hover {
+               // background-color: var(--pri)d;
+               // color: var(--whiteColor);
+            }
+        }
+    }
+}
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    border-top-left-radius: calc( 10px - ( 1px ));
+    border-top-right-radius: calc( 10px - ( 1px ));
+}
+
+h4, .h4 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.modal-body {
+    padding: 1rem;
+}
+
+/* zespol.component.scss */
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    object-fit: cover; /* To zapewnia, że obraz zostanie odpowiednio przycięty, jeśli jego proporcje nie są kwadratowe */
+  }
+  
+  .dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: transparent;
+  }
+  
+  
+  a {
+    cursor: pointer;
+}
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid #c9c9c9;
+    border-radius: 6px;
+    right: 0px;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}

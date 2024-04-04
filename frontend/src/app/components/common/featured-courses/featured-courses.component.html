@@ -1,0 +1,130 @@
+<!-- Default Courses Section -->
+<div
+    class="courses-area position-relative z-2 pt-100 pb-75"
+    [ngClass]="{'d-none': router.url === '/index-3'}"
+>
+
+
+
+
+    <div class="container">
+        <div class="section-title text-center">
+            <!-- <span class="sub-title  fw-medium text-uppercase" [ngClass]="{'d-none':  router.url === '/course-details'}">Oferta</span> -->
+            <span class="sub-title d-inline-block fw-medium bg-primary badge">Oferta</span>
+            <h2 class="mb-2" [ngClass]="{'d-none':  router.url === '/course-details'}">Nasze kursy</h2>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
+        </div>
+
+
+       
+
+
+       
+
+
+        <div class="swiper-container test swiper px-4">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide" *ngFor="let course of courses">
+                  <div class="single-course-item position-relative">
+                    <div class="image position-relative">
+                        <a [routerLink]="['/course-details', course.uri.split('/').pop()]" class="d-block">
+
+                        <img [src]="course.imageUrl" class="w-100" alt="course-image" (error)="setDefaultImage($event)">
+                      </a>
+                      <span class="price"> <i class='bx bx-time-five'></i>{{ course.duration }}</span>
+                    </div>
+                    <div class="content">
+                      <h3>
+                        <a [routerLink]="['/course-details', course.uri.split('/').pop()]">
+                            {{ course.name }}
+                            <img src="assets/images/arrow-up-right.png" class="img-fluid float-md-end" alt="">
+                          </a>
+                      </h3>
+                      <p>{{ course.description || 'Brak opisu' }}</p>
+                      <!-- <div class="rating-section">
+                        <span class="rating-text">{{course.rating}}</span>
+                        <span class="rating-icon px-1 d-inline-block rating">
+                          <i *ngFor="let star of [].constructor(course.rating); let i = index" class='bx bxs-star'></i>
+                        </span>
+                        <span class="rating-text-count">({{course.reviewsCount}})</span>
+                      </div> -->
+                      <div class="meta justify-content-between align-items-center d-flex">
+                        <a routerLink="/instructor-profile" class="user d-flex align-items-center">
+                            <img [src]="course.user.pictures.base_link" width="40" height="40" class="rounded-circle" alt="user-image">
+                            <div class="user-detail">
+                            <h5 class="m-0">{{course.user.name}}</h5>
+                            <p class="m-0">Instruktor</p>
+                            <!-- <p class="m-0">{{course.instructorTitle}}</p> -->
+                          </div>
+                        </a>
+                        <!-- <div class="price-text">
+                          {{course.price}} zł
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination mt-3"></div>
+          <div class="swiper-button-next">
+              <img class="img-slide"  src="assets/images/slide-arrow.png">
+          </div>
+          <div class="swiper-button-prev">
+              <img class="img-slide"  src="assets/images/slide-arrow.png">
+          </div>
+          </div>
+          
+          <!-- <div class="swiper-container test swiper px-4">
+            <div class="swiper-wrapper pb-5">
+                <div class="swiper-slide" *ngFor="let course of courses">
+                    <div class="single-course-item position-relative">
+                        <div class="image position-relative">
+                            <a [routerLink]="['/course-details', course.id]" class="d-block">
+                                <img [src]="course.image" alt="course-image">
+                            </a>
+                            <span class="price"> <i class='bx bx-time-five'></i>
+                                {{ course.duration }}
+                            </span>
+                        </div>
+                        <div class="content">
+                            <h3>
+                                <a [routerLink]="['/course-details', course.id]">
+                                    {{ course.title }}
+                                    <img src="assets/images/arrow-up-right.png" class="img-fluid float-md-end" alt="">
+                                </a>
+                            </h3>
+                            <p>{{ course.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+
+
+    </div>
+    <div class="text-center mt-4" [ngClass]="{'d-none':  router.url === '/courses-grid'}">
+        <a href="/courses-grid" class="badge bg-primary badge-large">Zobacz wszystkie dostępne kursy</a>
+    </div>
+</div>
+
+<!-- Courses Section for Home Demo - 2 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

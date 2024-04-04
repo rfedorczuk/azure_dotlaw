@@ -1,0 +1,101 @@
+
+ <div class="dashboard-sidebar navigation">
+    <button class="toggles"  (click)="toggleMenu()">
+        <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.75 0.750002L1.25 5.5L5.75 10.25" stroke="#FCFCFD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+    </button>
+    <ul class="nav flex-column pb-5">
+        <li class="nav-item side-logo">
+           
+            <a class="navbar-brand nav-link" routerLink="/">
+                <img src="assets/images/logo.png" alt="logo">
+            </a>
+        </li>
+        <!-- style="&#10;" -->
+        <li class="nav-item">
+            <a (click)="handleMenuItemClick()"  class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M12.7285 6.23132C13.2808 6.23132 13.7285 5.78361 13.7285 5.23132C13.7285 4.67904 13.2808 4.23132 12.7285 4.23132C12.1762 4.23132 11.7285 4.67904 11.7285 5.23132C11.7285 5.78361 12.1762 6.23132 12.7285 6.23132Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19.7285 6.23132C20.2808 6.23132 20.7285 5.78361 20.7285 5.23132C20.7285 4.67904 20.2808 4.23132 19.7285 4.23132C19.1762 4.23132 18.7285 4.67904 18.7285 5.23132C18.7285 5.78361 19.1762 6.23132 19.7285 6.23132Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.72852 6.23132C6.2808 6.23132 6.72852 5.78361 6.72852 5.23132C6.72852 4.67904 6.2808 4.23132 5.72852 4.23132C5.17623 4.23132 4.72852 4.67904 4.72852 5.23132C4.72852 5.78361 5.17623 6.23132 5.72852 6.23132Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.7285 13.2313C13.2808 13.2313 13.7285 12.7836 13.7285 12.2313C13.7285 11.679 13.2808 11.2313 12.7285 11.2313C12.1762 11.2313 11.7285 11.679 11.7285 12.2313C11.7285 12.7836 12.1762 13.2313 12.7285 13.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19.7285 13.2313C20.2808 13.2313 20.7285 12.7836 20.7285 12.2313C20.7285 11.679 20.2808 11.2313 19.7285 11.2313C19.1762 11.2313 18.7285 11.679 18.7285 12.2313C18.7285 12.7836 19.1762 13.2313 19.7285 13.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.72852 13.2313C6.2808 13.2313 6.72852 12.7836 6.72852 12.2313C6.72852 11.679 6.2808 11.2313 5.72852 11.2313C5.17623 11.2313 4.72852 11.679 4.72852 12.2313C4.72852 12.7836 5.17623 13.2313 5.72852 13.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.7285 20.2313C13.2808 20.2313 13.7285 19.7836 13.7285 19.2313C13.7285 18.679 13.2808 18.2313 12.7285 18.2313C12.1762 18.2313 11.7285 18.679 11.7285 19.2313C11.7285 19.7836 12.1762 20.2313 12.7285 20.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19.7285 20.2313C20.2808 20.2313 20.7285 19.7836 20.7285 19.2313C20.7285 18.679 20.2808 18.2313 19.7285 18.2313C19.1762 18.2313 18.7285 18.679 18.7285 19.2313C18.7285 19.7836 19.1762 20.2313 19.7285 20.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5.72852 20.2313C6.2808 20.2313 6.72852 19.7836 6.72852 19.2313C6.72852 18.679 6.2808 18.2313 5.72852 18.2313C5.17623 18.2313 4.72852 18.679 4.72852 19.2313C4.72852 19.7836 5.17623 20.2313 5.72852 20.2313Z" stroke="#FCFCFD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/my-profile">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M12.7285 13.2313C15.4899 13.2313 17.7285 10.9927 17.7285 8.23132C17.7285 5.4699 15.4899 3.23132 12.7285 3.23132C9.96709 3.23132 7.72852 5.4699 7.72852 8.23132C7.72852 10.9927 9.96709 13.2313 12.7285 13.2313Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20.7285 21.2313C20.7285 19.1096 19.8857 17.0748 18.3854 15.5745C16.8851 14.0742 14.8502 13.2313 12.7285 13.2313C10.6068 13.2313 8.57195 14.0742 7.07166 15.5745C5.57137 17.0748 4.72852 19.1096 4.72852 21.2313" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Mój Profil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/szkolenia">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M3.72852 3.23132V21.2313H21.7285" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18.7285 5.23132H8.72852C8.17623 5.23132 7.72852 5.67904 7.72852 6.23132V8.23132C7.72852 8.78361 8.17623 9.23132 8.72852 9.23132H18.7285C19.2808 9.23132 19.7285 8.78361 19.7285 8.23132V6.23132C19.7285 5.67904 19.2808 5.23132 18.7285 5.23132Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13.7285 13.2313H8.72852C8.17623 13.2313 7.72852 13.679 7.72852 14.2313V16.2313C7.72852 16.7836 8.17623 17.2313 8.72852 17.2313H13.7285C14.2808 17.2313 14.7285 16.7836 14.7285 16.2313V14.2313C14.7285 13.679 14.2808 13.2313 13.7285 13.2313Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Szkolenia
+            </a>
+        </li>
+     
+
+        <li class="nav-item" *ngIf="canAccessTeam">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/zespol">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M14.7285 19.2313C14.7285 17.64 14.0964 16.1139 12.9712 14.9887C11.8459 13.8635 10.3198 13.2313 8.72852 13.2313C7.13722 13.2313 5.61109 13.8635 4.48587 14.9887C3.36066 16.1139 2.72852 17.64 2.72852 19.2313" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.72852 13.2313C10.9377 13.2313 12.7285 11.4405 12.7285 9.23132C12.7285 7.02218 10.9377 5.23132 8.72852 5.23132C6.51938 5.23132 4.72852 7.02218 4.72852 9.23132C4.72852 11.4405 6.51938 13.2313 8.72852 13.2313Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22.7285 19.2313C22.7285 17.64 22.0964 16.1139 20.9712 14.9887C19.8459 13.8635 18.3198 13.2313 16.7285 13.2313C17.7894 13.2313 18.8068 12.8099 19.5569 12.0598C20.3071 11.3096 20.7285 10.2922 20.7285 9.23132C20.7285 8.17046 20.3071 7.15304 19.5569 6.4029C18.8068 5.65275 17.7894 5.23132 16.7285 5.23132" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Mój zespół
+            </a>
+        </li>
+      
+        <li class="nav-item">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/certyfikaty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M8.72852 21.2313H20.7285C21.2589 21.2313 21.7677 21.0206 22.1427 20.6455C22.5178 20.2705 22.7285 19.7618 22.7285 19.2313V17.2313H10.7285V19.2313C10.7285 19.7618 10.5178 20.2705 10.1427 20.6455C9.76766 21.0206 9.25895 21.2313 8.72852 21.2313ZM8.72852 21.2313C8.19808 21.2313 7.68937 21.0206 7.3143 20.6455C6.93923 20.2705 6.72852 19.7618 6.72852 19.2313V5.23132C6.72852 4.70089 6.5178 4.19218 6.14273 3.81711C5.76766 3.44204 5.25895 3.23132 4.72852 3.23132C4.19808 3.23132 3.68937 3.44204 3.3143 3.81711C2.93923 4.19218 2.72852 4.70089 2.72852 5.23132V8.23132H6.72852" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19.7285 17.2313V5.23132C19.7285 4.70089 19.5178 4.19218 19.1427 3.81711C18.7677 3.44204 18.2589 3.23132 17.7285 3.23132H4.72852" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Certyfikaty
+            </a>
+        </li>
+        <!-- Pakiety -->
+        <!-- <li class="nav-item">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/dashboard/pakiety">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M20.7285 12.2313V8.23132H6.72852C6.19808 8.23132 5.68937 8.02061 5.3143 7.64554C4.93923 7.27046 4.72852 6.76176 4.72852 6.23132C4.72852 5.13132 5.62852 4.23132 6.72852 4.23132H18.7285V8.23132" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4.72852 6.23132V18.2313C4.72852 19.3313 5.62852 20.2313 6.72852 20.2313H20.7285V16.2313" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18.7285 12.2313C18.1981 12.2313 17.6894 12.442 17.3143 12.8171C16.9392 13.1922 16.7285 13.7009 16.7285 14.2313C16.7285 15.3313 17.6285 16.2313 18.7285 16.2313H22.7285V12.2313H18.7285Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                Pakiety
+            </a>
+        </li> -->
+        <li class="nav-item logout-main">
+            <a (click)="handleMenuItemClick()" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                    <path d="M9.72852 21.2313H5.72852C5.19808 21.2313 4.68937 21.0206 4.3143 20.6455C3.93923 20.2705 3.72852 19.7618 3.72852 19.2313V5.23132C3.72852 4.70089 3.93923 4.19218 4.3143 3.81711C4.68937 3.44204 5.19808 3.23132 5.72852 3.23132H9.72852" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.7285 17.2313L21.7285 12.2313L16.7285 7.23132" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21.7285 12.2313H9.72852" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Wyloguj się
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+
+

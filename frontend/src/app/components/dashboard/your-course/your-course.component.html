@@ -1,0 +1,186 @@
+<div class=" p-3">
+  <span class="text-primary fw-bold fs-7" style="cursor: pointer;" (click)="onReturnClick()">
+    Powrót
+  </span>
+  <h5>{{ courseName }}</h5>
+</div>
+<div class="card border-top-radius">
+  <div class="card-body"> 
+
+
+                  <div *ngIf="!showTest">
+                    <ul class="horizentol-list">
+                      <li>
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <g clip-path="url(#clip0_214_29911)">
+                            <path d="M8.22999 15.395C11.9119 15.395 14.8967 12.4102 14.8967 8.72831C14.8967 5.04641 11.9119 2.06165 8.22999 2.06165C4.54809 2.06165 1.56332 5.04641 1.56332 8.72831C1.56332 12.4102 4.54809 15.395 8.22999 15.395Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.22998 4.72827V8.72827L10.8966 10.0616" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_214_29911">
+                            <rect width="16" height="16" fill="white" transform="translate(0.22998 0.728271)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                        </span> Czas trwania <span class="value-light">{{ courseDurationDisplay }}</span>
+                      </li>
+                      <li>
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <path d="M6.59619 2.72827H3.26286C2.89467 2.72827 2.59619 3.02675 2.59619 3.39494V6.72827C2.59619 7.09646 2.89467 7.39494 3.26286 7.39494H6.59619C6.96438 7.39494 7.26286 7.09646 7.26286 6.72827V3.39494C7.26286 3.02675 6.96438 2.72827 6.59619 2.72827Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.9295 2.72827H10.5962C10.228 2.72827 9.92952 3.02675 9.92952 3.39494V6.72827C9.92952 7.09646 10.228 7.39494 10.5962 7.39494H13.9295C14.2977 7.39494 14.5962 7.09646 14.5962 6.72827V3.39494C14.5962 3.02675 14.2977 2.72827 13.9295 2.72827Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.9295 10.0616H10.5962C10.228 10.0616 9.92952 10.3601 9.92952 10.7283V14.0616C9.92952 14.4298 10.228 14.7283 10.5962 14.7283H13.9295C14.2977 14.7283 14.5962 14.4298 14.5962 14.0616V10.7283C14.5962 10.3601 14.2977 10.0616 13.9295 10.0616Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.59619 10.0616H3.26286C2.89467 10.0616 2.59619 10.3601 2.59619 10.7283V14.0616C2.59619 14.4298 2.89467 14.7283 3.26286 14.7283H6.59619C6.96438 14.7283 7.26286 14.4298 7.26286 14.0616V10.7283C7.26286 10.3601 6.96438 10.0616 6.59619 10.0616Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span> Kategoria <span class="value-light">{{ courseCategory }}</span>
+                      </li>
+                      <li>
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <g clip-path="url(#clip0_214_30012)">
+                            <path d="M6.29573 14.7283H14.2957C14.6494 14.7283 14.9885 14.5878 15.2385 14.3377C15.4886 14.0877 15.6291 13.7486 15.6291 13.3949V12.0616H7.62906V13.3949C7.62906 13.7486 7.48859 14.0877 7.23854 14.3377C6.98849 14.5878 6.64935 14.7283 6.29573 14.7283ZM6.29573 14.7283C5.94211 14.7283 5.60297 14.5878 5.35292 14.3377C5.10287 14.0877 4.9624 13.7486 4.9624 13.3949V4.0616C4.9624 3.70798 4.82192 3.36884 4.57187 3.1188C4.32182 2.86875 3.98269 2.72827 3.62906 2.72827C3.27544 2.72827 2.9363 2.86875 2.68625 3.1188C2.43621 3.36884 2.29573 3.70798 2.29573 4.0616V6.0616H4.9624" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.6291 12.0616V4.0616C13.6291 3.70798 13.4886 3.36884 13.2385 3.1188C12.9885 2.86875 12.6494 2.72827 12.2957 2.72827H3.62907" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_214_30012">
+                            <rect width="16" height="16" fill="white" transform="translate(0.962402 0.728271)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                        </span> Certyfikat <span class="value-light">Tak</span>
+                      </li>
+                      <li>
+                        <span class="icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <g clip-path="url(#clip0_214_30016)">
+                            <path d="M8.32862 15.395C12.0105 15.395 14.9953 12.4102 14.9953 8.72831C14.9953 5.04641 12.0105 2.06165 8.32862 2.06165C4.64672 2.06165 1.66196 5.04641 1.66196 8.72831C1.66196 12.4102 4.64672 15.395 8.32862 15.395Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.32861 9.3949C9.43318 9.3949 10.3286 8.49947 10.3286 7.3949C10.3286 6.29033 9.43318 5.3949 8.32861 5.3949C7.22404 5.3949 6.32861 6.29033 6.32861 7.3949C6.32861 8.49947 7.22404 9.3949 8.32861 9.3949Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.99527 14.503V13.395C4.99527 13.0414 5.13575 12.7022 5.38579 12.4522C5.63584 12.2021 5.97498 12.0616 6.3286 12.0616H10.3286C10.6822 12.0616 11.0214 12.2021 11.2714 12.4522C11.5215 12.7022 11.6619 13.0414 11.6619 13.395V14.503" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_214_30016">
+                            <rect width="16" height="16" fill="white" transform="translate(0.328613 0.728271)"/>
+                            </clipPath>
+                            </defs>
+                            </svg>
+                        </span> Autor <span class="value-light">{{ authorDisplay }}</span>
+                      </li>
+                    </ul>
+                      <!-- <div class="card border-top-radius">
+                        <div class="card-body">
+                          <ul class="nav nav-tabs">
+                            <li class="nav-item" *ngFor="let lesson of reversedLessons; let i = index">
+                              <a class="nav-link" [ngClass]="{'active-tab': activeTab === i, 'inactive-tab': activeTab !== i}" style="cursor: pointer;" (click)="setActiveTab(i)">{{ lesson.name }}</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content mt-3" id="lessonTabsContent">
+                           
+                            <div class="tab-pane fade" *ngFor="let lesson of reversedLessons; let i = index" [class.show]="activeTab === i" [class.active]="activeTab === i" id="lesson{{reversedLessons.length - i - 1}}" role="tabpanel" [attr.aria-labelledby]="'lesson'+(reversedLessons.length - i - 1)+'-tab'">
+                              
+                              <div class="row">
+                                <div class="col-lg-3 col-xxl-3">
+                                  <div #vimeoPlayer>
+                                </div>
+                                </div>
+                                <div class="col-lg-4 col-xxl-4">
+                                  <div class="px-xxl-2">
+                                    <h6>Opis</h6>
+                                    <p class="small">Lorem ipsum dolor sit amet consectetur...</p>
+                                    <div class="button-container">
+                                      <span class="fw-bold">Jeśli ukończyłeś ten kurs przejdź do testu,<br>aby zdobyć certyfikat:</span>
+                                      <button class="btn radek-btn mt-3" (click)="startExam()" mat-stroked-button >Wykonaj test</button>
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="card border-top-radius">
+                        <div class="card-body">
+                          <ul class="nav nav-tabs">
+                            <li class="nav-item" *ngFor="let lesson of reversedLessons; let i = index">
+                              <a class="nav-link" [ngClass]="{'active-tab': activeTab === i, 'inactive-tab': activeTab !== i}" style="cursor: pointer;" (click)="setActiveTab(i)">{{ lesson.name }}</a>
+                            </li>
+                          </ul>
+                            <div class="tab-content mt-3" id="lessonTabsContent">
+                                <div class="tab-pane fade" *ngFor="let lesson of reversedLessons; let i = index" 
+                                     [class.show]="activeTab === i" [class.active]="activeTab === i">
+                                     
+                                    <!-- Kontener Flex -->
+                                    <div class="flex-container">
+                                    
+                                        <!-- Vimeo Player -->
+                                        <div class="vimeo-player-container">
+                                            <div #vimeoPlayer class="">
+                                                <!-- Miejsce na odtwarzacz Vimeo -->
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Opis i przycisk -->
+                                        <div class="description-container">
+                                            <h6>Opis</h6>
+                                            <p class="small">Lorem ipsum dolor sit amet consectetur...</p>
+                                            <div class="button-container">
+                                                <span class="fw-bold">Jeśli ukończyłeś ten kurs przejdź do testu,<br>aby zdobyć certyfikat:</span>
+                                                <button class="btn radek-btn mt-3" (click)="startExam()" mat-stroked-button>Wykonaj test</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                      
+                      
+                      <!-- <div class="col-lg-6 col-xxl-4">
+                          <div class="px-xxl-2">
+                              <h6>Opis</h6>
+                              <p class="small">Lorem ipsum dolor sit amet consectetur...</p>
+                       
+                            <div class="button-container">
+                                <span class="fw-bold">Jeśli ukończyłeś ten kurs przejdź do testu,<br>aby zdobyć certyfikat:</span>
+                                <button class="btn radek-btn mt-3" (click)="startExam()" mat-stroked-button >Wykonaj test</button>
+                            </div>
+        
+                        </div>
+                    </div> -->
+                    <div class="col-12 m-4">
+                      <button class="btn btn-white text-primary fw-bold" (click)="toggleNote()">
+                        {{ isNoteExpanded ? 'Zwiń notatkę' : 'Dodaj notatkę' }}
+                        <span>
+                          <svg *ngIf="!isNoteExpanded" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/> </svg>
+                          <svg *ngIf="isNoteExpanded" width="20" height="20" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8H4V7H11V8Z"/> </svg>
+                        </span>
+                      </button>
+                      <div *ngIf="isNoteExpanded" class="col-6">
+                        <textarea [(ngModel)]="noteContent" class="form-control" rows="2"></textarea>
+                        <button class="btn radek-btn m-2" (click)="saveNote()">Zapisz notatkę</button>
+                      </div>
+                    
+                      <div *ngFor="let note of notes" class="mt-3" (click)="editNote(note.id)">
+                        <p>{{ note.content }}</p>
+                        <small>Data utworzenia notatki: {{ note.created_at | date: 'dd.MM.yyyy' }}</small>
+                      </div>
+                    </div>
+                    
+                    </div>
+                  </div>
+                 
+                  <div *ngIf="showTest" class="card-body wizard">
+                    <app-exam [courseId]="course_id"
+                  [courseName]="lessons[0]?.name"
+                  (onFinish)="handleFinishExam($event)">
+        </app-exam>
+                  </div>
+                  <!-- <app-course-exam *ngIf="showTest" [courseId]="course_id" (examCompleted)="onExamCompleted()"></app-course-exam> -->
+<!-- Pozostała część szablonu -->
+
+
+
+  </div>
+

@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-between mb-3">
+  <h5 class="text-muted">Certyfikaty</h5>
+</div>
+<div class="card border-top-radius">
+  <div class="card-body p-2">
+    <div class="table-responsive">
+      <table *ngIf="certificates.length > 0; else tbody" class="table table-hover table-light szkolenia-table align-middle">
+        <thead class="bg-thead">
+          <tr>
+            <th scope="col" class="text-start">Nazwa certyfikatu</th>
+            <th scope="col" class="text-center">Data zakupu</th>
+            <th scope="col" class="text-center">Plik PDF</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let certificate of certificates">
+            <td scope="row">{{ certificate.name }}</td>
+            <td class="text-center">{{ certificate.purchaseDate }}</td>
+            <td class="text-center">
+              <!-- Use a button-style link to trigger the download; ensure accessibility by adding an aria-label -->
+              <a class="text-primary fw-bold" href="javascript:void(0);" (click)="downloadCertificate(certificate.courseId); $event.preventDefault()" aria-label="Download Certificate">Pobierz</a>
+            </td>
+                    
+          </tr>
+        </tbody>
+       
+      </table>
+      <ng-template #tbody>
+        <table class="table table-hover table-light szkolenia-table align-items-center">
+          <thead class="bg-thead">
+       
+          </thead>
+          <tbody class="text-center mt-10">
+        
+              <span class="text-center fw-normal mt-10">Po ukończeniu szkolenia znajdziesz tutaj swoje certyfikaty</span>
+             
+          </tbody>
+         
+        </table>
+     </ng-template>
+    </div>
+  </div>
+</div>

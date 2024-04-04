@@ -1,0 +1,48 @@
+{
+  "name": "akademia_dotlaw_backend",
+  "version": "1.0.0",
+  "description": "API Akademia dotlaw.co",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "20.x"
+  },
+  "keywords": [],
+  "author": "ENSOMEDIA",
+  "license": "ISC",
+  "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
+    "@vimeo/vimeo": "^3.0.2",
+    "axios": "^1.6.5",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.2.0",
+    "express-sanitizer": "^1.0.6",
+    "helmet": "^7.1.0",
+    "joi": "^17.10.2",
+    "jsonwebtoken": "^9.0.2",
+    "jszip": "^3.10.1",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.0.0",
+    "nodemailer": "^6.9.13",
+    "pdf-lib": "^1.17.1",
+    "sequelize": "^6.33.0",
+    "stripe": "^14.18.0",
+    "swagger-autogen": "^2.23.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^9.0.1",
+    "winston": "^3.10.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
+}

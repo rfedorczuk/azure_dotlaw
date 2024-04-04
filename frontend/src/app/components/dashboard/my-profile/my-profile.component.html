@@ -1,0 +1,74 @@
+<h2>Twój profil</h2>
+<div class="row mb-4">
+  <div class="col-sm-12 col-xl-6">
+    <div class="row align-items-end my-4">
+      <div class="col-md-7 d-flex align-items-center">
+        <div>
+            <input type="file" (change)="onFileSelected($event)" style="display: none" #fileInput>
+            <img *ngIf="user.avatar" [src]="user.avatar" alt="Avatar użytkownika" class="img-fluid circular-avatar" (click)="onAvatarClick()" />
+            <img *ngIf="!user.avatar" src="../../../../assets/images/blank.png" alt="Avatar użytkownika" class="img-fluid circular-avatar" (click)="onAvatarClick()"/>
+        </div>
+        <div class="ms-3">
+            <div>
+                <button class="btn btn-primary mb-3" (click)="onAvatarClick()">Zmień zdjęcie profilowe</button>
+            </div>
+            <div>
+              <button type="button" class="custom-button btn btn-outline-primary" (click)="deleteAccount()">Usuń konto</button>
+          </div>          
+        </div>
+    </div>
+    </div> 
+    <div class="row gy-4">
+      <div class="col-lg-12">
+        <div class="row">
+      <div class="col-lg-6">
+        <div class="">
+          <label for="firstName" class="form-label">Imię</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Imię" [(ngModel)]="user.name">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="">
+          <label for="surname" class="form-label">Nazwisko</label>
+          <input type="text" class="form-control" id="surname" placeholder="Nazwisko" [(ngModel)]="user.surname">
+        </div>
+      </div>
+      </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-sm-12"><label for="email" class="form-label">Adres mailowy</label></div>
+          <div class="col-lg-12">
+            <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
+          </div>
+          <!-- <div class="col-lg-3 align-self-center">
+            <button class="custom-button btn btn-outline-primary btn-block">Zmień adres</button>
+          </div> -->
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-sm-12"><label for="currentPassword" class="form-label">Zmień hasło</label></div>
+          <div class="col-lg-12">
+            <input type="password" class="form-control" id="currentPassword" placeholder="Aktualne hasło" [(ngModel)]="user.currentPassword">
+            <div *ngIf="currentPasswordError" class="text-danger">{{ currentPasswordError }}</div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-9">
+            <input type="password" class="form-control" id="newPassword" placeholder="Nowe hasło" [(ngModel)]="user.newPassword">
+            <div *ngIf="newPasswordError" class="text-danger">{{ newPasswordError }}</div>
+          </div>
+          <div class="col-lg-3 align-self-center">
+            <button type="button" class="custom-button btn btn-outline-primary" (click)="changePassword()">Zmień hasło</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 mt-4">
+    <button class="btn btn-primary btn-block" (click)="updateProfile()">Aktualizuj profil</button>
+</div>
+
+</div>
+<app-toaster></app-toaster>

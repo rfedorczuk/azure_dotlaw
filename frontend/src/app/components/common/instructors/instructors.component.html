@@ -1,0 +1,49 @@
+<div class="instructors-area pt-100 pb-75">
+    <div class="container">
+        <div class="section-title text-center" *ngFor="let content of sectionTitle;">
+            <span class="sub-title d-inline-block fw-medium bg-success badge">{{content.subTitle}}</span>
+            <h2 class="mb-0 fw-bold">{{content.title}}</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <p class="lower-text">{{content.paragraph}}</p>
+                </div>
+            </div>
+
+           
+        </div>
+
+        <div class="swiper-container test swiper">
+            <div class="swiper-wrapper pb-5">
+              <div class="swiper-slide" *ngFor="let content of instructorBox;">
+                <div class="" >
+                    <div class="single-instructor-box">
+                        <img [src]="content.image" alt="instructor-image">
+                        <div class="content">
+                            <!-- <h3><a routerLink="{{content.link}}">
+                                {{content.name}}
+                            </a></h3> -->
+                            <h3>
+                                {{content.name}}
+                            </h3>
+                            <span class="d-block">{{content.designation}}</span>
+                           
+                        </div>
+                        
+                    </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="swiper-pagination mt-3"></div>
+            <div class="swiper-button-next">
+                <img class="img-slide"  src="assets/images/slide-arrow.png">
+            </div>
+            <div class="swiper-button-prev">
+                <img class="img-slide"  src="assets/images/slide-arrow.png">
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

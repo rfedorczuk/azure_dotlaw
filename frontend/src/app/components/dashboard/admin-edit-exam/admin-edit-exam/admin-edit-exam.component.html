@@ -1,0 +1,91 @@
+<h2>Tworzenie Testu dla Kursu: {{ courseId }}</h2>
+<div class="card border-top-radius">
+  <div class="card-body p-2">
+    <div *ngIf="!isExamSaved" class="p-3">
+      <!-- Nawigacja zakładek dla pytań -->
+      <ul class="nav nav-tabs" id="questionTabs" role="tablist">
+
+        <li class="nav-item" *ngFor="let question of questions; let i = index">
+          <a class="nav-link question-main d-flex justify-content-between align-items-center" [class.active]="i === activeQuestionIndex" id="question-tab-{{i}}" role="tab" (click)="setActiveQuestion(i)">
+            <span class="flex-grow-1">Pytanie {{i + 1}}</span>
+            <span class="delete-icon ms-2" aria-label="Usuń" (click)="$event.stopPropagation(); deleteQuestion(i)">&times;</span>
+          </a>
+        </li>
+        
+        
+        
+          
+        <li class="nav-item">
+          <a class="nav-link" style="color: #825EF3!important; cursor: pointer; text-decoration: none!important;" (click)="addNewQuestion()"><span class="icon-sid"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25"
+            fill="none">
+            <path
+              d="M12.0679 22.2313C17.5907 22.2313 22.0679 17.7542 22.0679 12.2313C22.0679 6.70848 17.5907 2.23132 12.0679 2.23132C6.54502 2.23132 2.06787 6.70848 2.06787 12.2313C2.06787 17.7542 6.54502 22.2313 12.0679 22.2313Z"
+              stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12.0679 8.23132V16.2313" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M8.06787 12.2313H16.0679" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg></span><span style="color: #000!important">Kolejne pytanie</span></a>
+        </li>
+      </ul>
+
+      <!-- Zawartość dla zakładek -->
+      <div class="tab-content" id="questionTabsContent">
+        <div *ngFor="let question of questions; let i = index" class="tab-pane fade" [class.show]="i === activeQuestionIndex" [class.active]="i === activeQuestionIndex" id="question{{i}}" role="tabpanel" attr.aria-labelledby="question-tab-{{i}}">
+          <div class="row mt-3">
+            <div class="col-lg-7 col-xl-7 col-xxl-5">
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control question-main me-lg-5" placeholder="Wpisz tutaj pytanie {{i + 1}}" [(ngModel)]="question.questionText" name="questionText{{i}}" required>
+                </div>
+
+                <div *ngFor="let answer of question.answers; let aIndex = index" class="mt-2">
+                    <div class="form-group d-flex align-items-center">
+                      <input type="text" class="form-control" [(ngModel)]="answer.answerText"
+                             placeholder="Odpowiedź {{aIndex + 1}}" 
+                             [ngClass]="{'correct-answer': answer.isCorrect}"
+                             [name]="'answerText' + i + '_' + aIndex" 
+                             (contextmenu)="openContextMenu($event, i, aIndex)" required>
+                      <!-- Poprawne miejsce na "Poprawna odpowiedź", jeśli menu ma być zawsze widoczne -->
+                      <button type="button" *ngIf="selectedInput?.questionIndex === i && selectedInput?.answerIndex === aIndex" 
+                              (click)="textsuccess(i, aIndex)" class="transparent-btn ml-2">Poprawna odpowiedź</button>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                
+                  
+                  
+                  
+                
+                
+                <button class="transparent-btn mt-3 mb-4" (click)="addAnswerToQuestion(i)">
+                    <span class="icon-sid"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
+                        fill="none">
+                        <path
+                          d="M12.0679 22.2313C17.5907 22.2313 22.0679 17.7542 22.0679 12.2313C22.0679 6.70848 17.5907 2.23132 12.0679 2.23132C6.54502 2.23132 2.06787 6.70848 2.06787 12.2313C2.06787 17.7542 6.54502 22.2313 12.0679 22.2313Z"
+                          stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.0679 8.23132V16.2313" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M8.06787 12.2313H16.0679" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg></span>Dodaj kolejną odpowiedź</button>
+                      
+                <!-- <button class="transparent-btn mt-3 mb-4" type="button" (click)="addAnswerToQuestion(i)">Dodaj nową odpowiedź</button> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn text-dark" type="button">Anuluj</button>
+        <button class="radek-btn" type="button" (click)="saveAllQuestions();">Zatwierdź test</button>
+      </div>
+    </div>
+    <div *ngIf="isExamSaved">
+        <span style="color: green!important">Egzamin dla kursu: {{ courseId }} został zapisany poprawnie. <a href="/admin-dashboard/courses">Wróć do szkoleń</a></span>
+      </div>
+  </div>
+</div>

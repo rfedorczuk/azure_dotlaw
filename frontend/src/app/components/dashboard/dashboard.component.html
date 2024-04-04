@@ -1,0 +1,202 @@
+<div class="dashboard-area">
+  <app-dasnboard-sidebar (NavCollapsedMob)="navMobClick()"></app-dasnboard-sidebar>
+  <div class="main">
+     <app-dasnboard-navbar></app-dasnboard-navbar>
+     <div *ngIf="isTableVisible" class="main-inner">
+        <ng-container *ngIf="(router.url === '/dashboard'); else elseBlock">
+           <div class="dashboard-statss">
+              <div class="row g-3">
+                 <div class="col-12">
+                    <h5 class="text-muted">Witaj na platformie e-learningowej dotlaw</h5>
+                 </div>
+                 <!-- [ sample-page ] start -->
+                 <div class="col-xl-3 col-md-6">
+                    <div class="card dashnum-card overflow-hidden">
+                       <div class="card-body">
+                          <div class="row">
+                             <div class="col-auto align-self-center">
+                                <div class="avtar rounded-circle first-card-icon">
+                                   <img src="assets/images/dashboard/courses_icon.png" alt="" class="icon" />
+                                </div>
+                             </div>
+                             <div class="col px-md-0">
+                                <p class="mb-0 opacity-50">Aktywne szkolenia</p>
+                                <span class=" d-block fs-3 fw-bold my-1">{{ activeCoursesCount }}</span>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-xl-3 col-md-6">
+                    <div class="card  dashnum-card  overflow-hidden">
+                       <div class="card-body">
+                          <div class="row">
+                             <div class="col-auto align-self-center">
+                                <div class="avtar rounded-circle second-card-icon">
+                                   <img src="assets/images/dashboard/courses_icon-2.png" alt="" class="icon" />
+                                </div>
+                             </div>
+                             <div class="col px-md-0">
+                              <p class="mb-0 opacity-50">Ukończone kursy</p>
+                              <span class="d-block fs-3 fw-bold my-1">{{ completedCoursesCount }}</span>
+                            </div>
+                            
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-xl-3 col-md-6" *ngIf="canAccessTeam">
+                    <div class="card  dashnum-card  overflow-hidden">
+                       <div class="card-body">
+                          <div class="row">
+                             <div class="col-auto align-self-center">
+                                <div class="avtar rounded-circle third-card-icon">
+                                   <img src="assets/images/dashboard/user_icon.png" alt="" class="icon" />
+                                </div>
+                             </div>
+                             <div class="col px-md-0">
+                                <p class="mb-0 opacity-50">Uczestnicy</p>
+                                <span class=" d-block fs-3 fw-bold my-1">{{ totalUsersCount }}</span>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-xl-3 col-md-6">
+                    <div class="card  dashnum-card  overflow-hidden">
+                       <div class="card-body">
+                          <div class="row">
+                             <div class="col-auto align-self-center">
+                                <div class="avtar rounded-circle forth-card-icon">
+                                   <img src="assets/images/dashboard/certificate.png" alt="" class="icon" />
+                                </div>
+                             </div>
+                             <div class="col px-md-0">
+                                <p class="mb-0 opacity-50">Zdobyte certyfikaty</p>
+                                <span class=" d-block fs-3 fw-bold my-1">{{ completedCoursesCount }} </span>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-xl-12 col-md-12">
+                    <div class="d-flex justify-content-between">
+                       <h2 *ngIf="canAccessTeam; else elseBlock">Szkolenia organizacji</h2>
+                       <ng-template #elseBlock>
+                          <h2>Twoje szkolenia</h2>
+                       </ng-template>
+                       <div>
+                          <a routerLink="/dashboard/szkolenia" class="m-0 opacity-50" style="cursor: pointer;">Przejdź do zakładki szkolenia </a>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                             <g clip-path="url(#clip0_116_27379)">
+                                <path d="M5.22949 12.2313H19.2295" stroke="#ACB7BD" stroke-width="1.5" stroke-linecap="round"
+                                   stroke-linejoin="round" />
+                                <path d="M15.2295 16.2313L19.2295 12.2313" stroke="#ACB7BD" stroke-width="1.5"
+                                   stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M15.2295 8.23132L19.2295 12.2313" stroke="#ACB7BD" stroke-width="1.5"
+                                   stroke-linecap="round" stroke-linejoin="round" />
+                             </g>
+                             <defs>
+                                <clipPath id="clip0_116_27379">
+                                   <rect width="24" height="24" fill="white" transform="translate(0.229492 0.231323)" />
+                                </clipPath>
+                             </defs>
+                          </svg>
+                       </div>
+                    </div>
+                    <div class="card border-0">
+                       <div class="card-body">
+                          <div class="table-responsive">
+                             <table class="table table-hover index-table align-middle">
+                                <thead class="bg-thead mb-2">
+                                   <tr>
+                                      <th scope="col">Nazwa</th>
+                                      <th scope="col" *ngIf="canAccessTeam">Ilość uczestników</th>
+                                      <th scope="col">Data zamówienia</th>
+                                      <th scope="col" *ngIf="!canAccessTeam">Status</th>
+                                      <!-- <th scope="col"  *ngIf="canAccessTeam">Cena</th> -->
+                                      <th scope="col">Akcja</th>
+                                   </tr>
+                                </thead>
+                                <tbody>
+                                   <tr *ngFor="let course of userCourses; let i = index">
+                                      <td>{{ course.title }}</td>
+                                      <td *ngIf="canAccessTeam" class="fw-bold">{{ course.TotalUsers }}</td>
+                                      <td *ngIf="canAccessTeam">{{ course.created_at | date: 'dd.MM.yyyy'}}</td>
+                                      <td *ngIf="!canAccessTeam">{{ course.enrollment_date | date: 'dd.MM.yyyy' }}</td>
+                                      <td *ngIf="!canAccessTeam">{{ course.status }}</td>
+                                      <!-- <td *ngIf="canAccessTeam">{{ course.price }}</td> -->
+                                      <!-- <td *ngIf="!canAccessTeam" style="cursor: pointer;"><span class="text-primary"><strong>Przejdź do kursu</strong></span></td> -->
+                                      <td *ngIf="!canAccessTeam" style="cursor: pointer;" (click)="openCourse(course.title)">
+                                      <span class="text-primary"><strong>Przejdź do kursu</strong></span>
+                                      </td>
+                                      <td *ngIf="canAccessTeam">
+                                       <div class="dropdown">
+                                          <button class="btn btn-white dropdown-toggle" (click)="toggleDropdown(i)" type="button" [id]="'dropdownMenuButton' + i">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots"
+                                              width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                              fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                              <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                              <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                              <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                                            </svg>
+                                          </button>
+                                          <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{ 'show': isOpenArray[i] }" [attr.aria-labelledby]="'dropdownMenuButton' + i">
+                                             <li>
+                                               <a class="dropdown-item" style="cursor: pointer;" (click)="openAddUserPopup(course.course_id)">Dodaj użytkownika do kursu</a>
+                                             </li>
+                                           </ul>
+                                           
+                                        </div>
+                                      </td>
+                                   </tr>
+                                </tbody>
+                             </table>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </ng-container>
+        <ng-template #elseBlock>
+           <router-outlet></router-outlet>
+        </ng-template>
+     </div>
+     <!-- app.component.html lub inny główny komponent -->
+
+ 
+  </div>
+</div>
+
+<div class="form-popup" *ngIf="isAddUserPopupOpen">
+   <div class="popup-inner">
+     <div class="modal-header bg-white m-2">
+       <h4 class="modal-title" id="modal-basic-title"><strong>Przypisz użytkowników do kursu</strong></h4>
+     
+       
+       <button (click)="closeAddUserPopup()" type="button" class="close-btn btn-close">
+         
+       </button>
+     </div>
+     <div class="modal-body bg-white rounded">
+       <form>
+         <div class="mb-3">
+           
+           <div *ngFor="let user of users; let i = index" class="form-check">
+             <input class="form-check-input" type="checkbox" id="userCheckbox{{i}}" [value]="user.id" (change)="toggleUserSelection(user.id)">
+             <label class="form-check-label" for="userCheckbox{{i}}">
+               {{user.name}} {{user.surname}}
+             </label>
+           </div>
+         </div>
+         <button class="btn radek-btn" (click)="addUsersToCourse()" type="button">Przypisz</button>
+       </form>
+     </div>
+   </div>
+ </div>
+
+ <app-toaster></app-toaster>
+ 
+ 

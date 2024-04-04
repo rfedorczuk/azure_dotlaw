@@ -1,0 +1,27 @@
+<!-- Default Features Section -->
+<div
+    class="features-area pt-100 pb-75"
+    [ngClass]="{'d-none': router.url === '/index-2' || router.url === '/index-3' || router.url === '/about'}"
+>
+    <div class="container">
+        <div class="row align-items-center" *ngFor="let content of featuresContent;">
+            <div class="col-md-12 text-center">
+                <img [src]="content.image1" alt="features-image">
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="features-content">
+                    <h2>{{content.title}}</h2>
+                    <div class="text-center avater-text">
+                        <img [src]="content.image2" alt="features-image">
+                        <h3>Jędrzej Stępniowski</h3>
+                        <h4>Ceo &amp; Founder</h4>
+                  </div>
+
+                 
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,161 @@
+<div class="d-flex justify-content-between mb-3">
+  <h5 class="text-muted">Dostępne szkolenia</h5>
+  <div>
+    <a class="m-0  d-inline-block" style="cursor: pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
+        <path d="M12.1992 22C17.7221 22 22.1992 17.5228 22.1992 12C22.1992 6.47715 17.7221 2 12.1992 2C6.67637 2 2.19922 6.47715 2.19922 12C2.19922 17.5228 6.67637 22 12.1992 22Z" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M12.1992 8V16" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M8.19922 12H16.1992" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="opacity-60 fw-bold"> Dodaj szkolenia do platformy</span>
+    </a>
+  </div>
+</div>
+<div class="card border-top-radius">
+  <div class="card-body p-2">
+    <div>
+      <div class="table-responsive">
+        <table class="table table-hover table-light szkolenia-table align-middle">
+          <thead class="bg-thead">
+            <tr>
+              <th scope="col" class="text-start">Nazwa szkolenia</th>
+              <th scope="col" class="text-center">Egzamin</th>
+              <th scope="col" class="text-center">Ilość użytkowników</th>
+              <th scope="col" class="text-center">Limit użytkowników</th>
+              <th scope="col" class="text-center">Data dodania</th>
+              <th scope="col" class="text-center">Kod kursu</th>
+              <th scope="col" class="text-center">Akcja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of userCourses; let i = index">
+              <td>{{ course.title }}</td>
+              <td class="text-center">{{ course.has_exam || 'NIE' }}</td>
+              <td class="text-center">{{ course.user_count || '0' }}</td>
+              <td class="text-center">{{ course.user_limit || 'Brak' }}</td>
+              <td class="text-center">{{ course.created_at | date: 'dd.MM.yyyy' }}</td>
+              <td class="text-center">{{ course.course_code || 'Brak kodu' }}</td>
+              <td class="text-center">
+                <div class="dropdown" #dropdown>
+                  <button class="btn btn-white dropdown-toggle" (click)="toggleDropdown(i)" type="button" id="dropdownMenuButton{{i}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dots" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                      <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                      <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{ 'show': isOpenArray[i] }" [attr.aria-labelledby]="'dropdownMenuButton' + i">
+                    <li>
+                      <a class="dropdown-item" (click)="exportReport(course.id)">Eksportuj raport</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" (click)="navigateToEditTest(course.course_id)">Edytuj test dla tego szkolenia</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" (click)="openCodeGeneratePopupForCourse(course.course_id)">Utwórz kod</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" (click)="openAddUserPopup(course.id)">Przypisz szkolenie</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" (click)="openUserLimitModal(course.id)">Ustaw limit użytkowników</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="video-popup" *ngIf="isOpen">
+  <div class="popup-inner">
+    <div class="modal-header bg-white">
+      <h4 class="modal-title" id="modal-basic-title">Dodaj nowe szkolenie</h4>
+      <button (click)="closePopup()" type="button" class="close-btn btn-close">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div class="modal-body bg-white rounded">
+      <form>
+        <div class="mb-3">
+          <div class="">
+            <label for="" class="form-label">Wpisz kod szkolenia, otrzymany podczas jego zakupu. </label>
+            <input type="text" class="form-control" id="" placeholder="Wpisz swój kod szkolenia">
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button (click)="handleButtonClick()" class="btn radek-btn">Dodaj szkolenie</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="video-popup" *ngIf="isCodeGenerateOpen">
+  <div class="popup-inner">
+    <div class="modal-header bg-white">
+      <h4 class="modal-title">Wygeneruj kod dla szkolenia</h4>
+      <button (click)="closeCodeGeneratePopup()" type="button" class="close-btn btn-close">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div class="modal-body bg-white rounded">
+      <span>Automatycznie wygenerowany kod będzie zawierał 12 znaków (cyfry i litery).</span>
+      <div class="d-flex justify-content-end">
+        <button (click)="generateAndCreateCourseCode()" class="btn radek-btn">Wygeneruj kod</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-popup" *ngIf="isAddUserPopupOpen">
+  <div class="popup-inner">
+    <div class="modal-header bg-white m-2">
+      <h4 class="modal-title" id="modal-basic-title">
+        <strong>Przypisz Szkolenie do organizacji</strong>
+      </h4>
+      <button (click)="closeAddUserPopup()" type="button" class="close-btn btn-close">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div class="modal-body bg-white rounded">
+      <form>
+        <div class="mb-3">
+          <div *ngFor="let company of companies; let i = index" class="d-flex align-items-center custom-checkbox mb-3">
+            <input class="form-check-input" type="checkbox" id="companyCheckbox{{i}}" name="companySelected" [(ngModel)]="company.selected" [value]="company.id">
+            <span style="margin-left: 8px; font-size: 16px!important;">{{company.company_name}}</span>
+          </div>
+        </div>
+        <!-- Dodałem kontener d-flex z justify-content-end dla wyrównania przycisku do prawej -->
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn radek-btn" (click)="addCompaniesToCourse()">Przypisz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="video-popup" *ngIf="isSetUserLimitPopupOpen">
+  <div class="popup-inner">
+    <div class="modal-header bg-white">
+      <h4 class="modal-title" id="modal-basic-title">Ustaw limit użytkowników</h4>
+      <button (click)="closeSetUserLimitPopup()" type="button" class="close-btn btn-close">
+        <i class='bx bx-x'></i>
+      </button>
+    </div>
+    <div class="modal-body bg-white rounded">
+      <form>
+        <div class="mb-3">
+          <label for="userLimit" class="form-label">Maksymalna ilość użytkowników</label>
+          <input type="number" class="form-control" id="userLimit" name="userLimit" [(ngModel)]="userLimit" placeholder="Wpisz limit użytkowników">
+        </div>
+        <div class="d-flex justify-content-end">
+          <button (click)="selectedCourseId !== null && setUserLimitForCourse(selectedCourseId, userLimit); closeSetUserLimitPopup()" class="btn radek-btn">Ustaw limit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Assign Course Modal -->
+<!-- <div class="modal fade" id="assignCourseModal" tabindex="-1" aria-labelledby="assignCourseModalLabel" aria-hidden="true" *ngIf="isAddUserPopupOpen"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="assignCourseModalLabel">Przypisz Szkolenie</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeAddUserPopup()"><span aria-hidden="true">&times;</span></button></div><div class="modal-body"><form><div class="form-group"><label for="companySelect">Wybierz firmę:</label><select class="form-control" id="companySelect"><option *ngFor="let company of companies" [value]="company.id">{{company.name}}</option></select></div><div class="form-group"><button type="button" class="btn btn-primary" (click)="addCompaniesToCourse()">Przypisz</button></div></form></div></div></div></div> -->

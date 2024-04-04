@@ -1,0 +1,93 @@
+<div *ngIf="!isPlayerVisible" class="d-flex justify-content-between mb-3">
+  <h5 class="text-muted">Twoje szkolenia</h5>
+      <div><a class="m-0  d-inline-block" style="cursor: pointer" (click)="openPopup()"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
+            <path d="M12.1992 22C17.7221 22 22.1992 17.5228 22.1992 12C22.1992 6.47715 17.7221 2 12.1992 2C6.67637 2 2.19922 6.47715 2.19922 12C2.19922 17.5228 6.67637 22 12.1992 22Z" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.1992 8V16" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.19922 12H16.1992" stroke="#825EF3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> <span class="opacity-60"> Dodaj szkolenie</span>
+          </a>
+      </div>
+  </div>
+  <div *ngIf="!isPlayerVisible" class="card border-top-radius">
+    <div class="card-body p-2"> 
+      <div *ngIf="isTableVisible">
+      <div class="table-responsive">
+        <table class="table table-hover table-light szkolenia-table align-middle">
+            <thead class="bg-thead">
+            <tr>
+              <th scope="col" class="text-start">Nazwa szkolenia</th>
+              <!-- <th scope="col" class="text-center" *ngIf="canAccessTeam">Ilość użytkowników</th> -->
+              <th scope="col" class="text-center">Data zakupu</th>
+              <th scope="col" class="text-center">Status</th>
+              <th scope="col" class="text-center">Akcja</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of userCourses; let i = index">
+              <td (click)="openCourseDetails(course.title)">{{ course.title }}</td>
+              <!-- zapytać -->
+              <td class="text-center">{{ course.enrollment_date | date: 'dd.MM.yyyy' }}</td>
+              <td class="text-center">{{ course.status }}</td>
+              <!-- <td class="text-center">/* Opcje edycji */</td> -->
+              <td class="text-center">
+                <div class="dropdown" #dropdown>
+                  <button class="btn byn-sm btn-white text-primary fw-normal" style="font-size:smaller;" (click)="openCourseDetails(course.title)" >
+                    <strong>Przejdź do kursu</strong>
+                  </button>
+                
+                </div>
+           
+              </td>
+            </tr>
+          </tbody>
+         
+        </table>
+      </div>
+      
+    </div>
+    
+    </div>
+    <!-- Przykład użycia w szablonie HTML komponentu -->
+
+
+  </div>
+<div *ngIf="isPlayerVisible">
+<app-your-course *ngIf="selectedCourseDetails"
+  [course_id]="course_id"
+  [user_id]="user_id"
+  [lessons]="selectedCourseDetails.lessons"
+  (returnToCourses)="backToTable()">
+</app-your-course>
+
+
+</div>
+
+
+<div class="video-popup" *ngIf="isOpen">
+    <div class="popup-inner">
+      <div class="modal-header bg-white">
+          <h4 class="modal-title" id="modal-basic-title">Dodaj nowe szkolenie</h4>
+          <button (click)="closePopup()" type="button" class="close-btn btn-close">
+            <i class='bx bx-x'></i>
+        </button>
+      </div>
+  
+      <div class="modal-body bg-white rounded">
+        <form (ngSubmit)="handleButtonClick()">
+            <div class="mb-3">
+                <div class="">
+                    <label for="courseCode" class="form-label">Wpisz kod szkolenia, otrzymany podczas jego zakupu.</label>
+                    <input type="text" class="form-control" id="courseCode" [(ngModel)]="code" name="courseCode" placeholder="Wpisz swój kod szkolenia">
+                </div>
+            </div>
+            <button class="btn radek-btn">Dodaj szkolenie</button>
+        </form>
+    </div>
+    
+    
+    </div>
+</div>
+<app-toaster></app-toaster>
+
+
