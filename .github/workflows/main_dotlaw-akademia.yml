@@ -41,7 +41,7 @@ jobs:
       - name: Install frontend dependencies and build
         run: |
           cd frontend
-          npm install
+          npm install --legacy-peer-deps
           npm run build --prod
 
       # Move frontend build output to backend/public directory
