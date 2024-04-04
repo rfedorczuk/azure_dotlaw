@@ -37,12 +37,26 @@ jobs:
           cache: 'npm'
           cache-dependency-path: frontend/package-lock.json
 
-      # Install and build frontend
-      - name: Install frontend dependencies and build
+      # Install frontend dependencies including @stripe/stripe-js with legacy-peer-deps
+      - name: Install frontend dependencies with legacy peer deps
         run: |
           cd frontend
           npm install --legacy-peer-deps
+        shell: pwsh
+
+      # Install @stripe/stripe-js explicitly
+      - name: Install @stripe/stripe-js explicitly
+        run: |
+          cd frontend
+          npm install @stripe/stripe-js
+        shell: pwsh
+
+      # Build frontend
+      - name: Build frontend
+        run: |
+          cd frontend
           npm run build --prod
+        shell: pwsh
 
       # Move frontend build output to backend/public directory
       - name: Move frontend build to backend/public directory
